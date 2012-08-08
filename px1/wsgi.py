@@ -17,8 +17,8 @@ import os, sys
 
 base = os.path.dirname(os.path.dirname(__file__))
 base_parent = os.path.dirname(base)
-sys.path.append(base)
-sys.path.append(base_parent)
+sys.path.append(base)           # include project path for Apache to work
+sys.path.append(base_parent)    # include project path for Apache to work
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "px1.settings")
 
 # This application object is used by any WSGI server configured to use this

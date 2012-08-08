@@ -7,25 +7,29 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = [
-    # ("Your Name", "your_email@example.com"),
+    ('chiwang', 'w121210@hotmail.com'),
 ]
 
 MANAGERS = ADMINS
 
-DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'django_db',
-#        'USER': 'django_login',
-#        'PASSWORD': '19861212',
-#        'HOST': 'localhost',
-#        'PORT': '5432',
-#    }
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "dev.db",
+if (True):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "dev.db",
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'django_db',
+            'USER': 'django_login',
+            'PASSWORD': '19861212',
+            'HOST': 'localhost',
+            'PORT': '5432',
+            }
+    }
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -143,9 +147,10 @@ INSTALLED_APPS = [
     "account",
     "timezones",
     "metron",
+    'taggit',
 
     # project
-    "forum"
+    'forum',
 ]
 
 # A sample logging configuration. The only tangible logging

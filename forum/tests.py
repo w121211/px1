@@ -1,11 +1,12 @@
-from django.test import TestCase
+#from django.test import TestCase
+from django.utils import unittest
 from django.test.client import Client
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 
 from forum.models import *
 
-class SimpleTest(TestCase):
+class SimpleTest(unittest.TestCase):
     def setUp(self):
         f = Forum.objects.create(title="forum")
         u = User.objects.create_user("ak", "ak@abc.org", "pwd")

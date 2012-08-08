@@ -47,7 +47,7 @@
             {% block nav-global %}
 
                 <!-- MENU -->
-                <h3><a href="{% url forum.views.main %}">ForumApp</a></h3>
+                <h3><a href="{% url forum.views.index %}">Forum Top</a></h3>
 
                 {% comment %}
                 {% if user.is_staff %} <a href="{% url admin:index %}">Admin</a> {% endif %}

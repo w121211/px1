@@ -5,13 +5,21 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
 from account.decorators import login_required
-from forum.models import *
+from taggit.models import Tag
+
 from px1.settings import MEDIA_ROOT, MEDIA_URL
+from forum.models import *
 
 #class ProfileForm(ModelForm):
 #    class Meta:
 #        model = UserProfile
 #        exclude = ["posts", "user"]
+
+def add_csrf(request, **kwargs):
+    """Add CSRF to dictionary."""
+    d = dict(user=request.user, **kwargs)
+    d.update(csrf(request))
+    return d
 
 def mk_paginator(request, items, num_items):
     "Create and return a paginator."
@@ -25,24 +33,46 @@ def mk_paginator(request, items, num_items):
         items = paginator.page(paginator.num_pages)
     return items
 
-def main(request):
-    "Main listing."
-    forums = Forum.objects.all()
-    return render_to_response("forum/list.html", dict(forums=forums, user=request.user))
+def index(request):
+    """listing of available boards."""
+    boards = Board.objects.all()
+    return render_to_response("forum/index.html", add_csrf(request, boards=boards))
 
-def forum(request, pk):
-    "Listing of threads in a forum."
-    threads = Thread.objects.filter(forum=pk).order_by("-created")
-    threads = mk_paginator(request, threads, 20)
-    return render_to_response("forum/forum.html", add_csrf(request, threads=threads, pk=pk))
+def tag(request):
+    """Listing of all tags."""
+    tags = Tag.objects.all()
+    return render_to_response('forum/tag.html', {'tags': tags})
 
-def thread(request, pk):
-    "Listing of posts in a thread."
-    posts = Post.objects.filter(thread=pk).order_by("created")
+def tag_board(request):
+    """Listing of posts in a board depends on given tags."""
+    tags = request.GET.getlist('t')
+    posts = Post.objects.filter(tags__name__in=tags).distinct()
+    posts = mk_paginator(request, posts, 20)
+    return render_to_response('forum/tag_board.html',
+                              add_csrf(request, posts=posts))
+
+def board(request, board_id):
+    """Listing of posts in a board."""
+    posts = Post.objects.filter(board=board_id).order_by('-created')
+    posts = mk_paginator(request, posts, 20)
+    return render_to_response("forum/board.html",
+                              add_csrf(request, posts=posts, board_id=board_id))
+
+def new_board(request):
+    """Creating a new board"""
+    b = request.POST
+    if b['title']:
+        Board.objects.create(title=b['title'])
+    return HttpResponseRedirect(reverse('forum.views.index'))
+
+def thread(request, thread_id):
+    """Listing of posts in a thread."""
+    t = Thread.objects.get(id=thread_id)
+    posts = Post.objects.filter(thread=t).order_by("created")
     posts = mk_paginator(request, posts, 15)
-    t = Thread.objects.get(pk=pk)
-    return render_to_response("forum/thread.html", add_csrf(request, posts=posts, pk=pk, title=t.title,
-        forum_pk=t.forum.pk, media_url=MEDIA_URL))
+    #t = Thread.objects.get(pk=pk)
+    return render_to_response("forum/thread.html",
+        add_csrf(request, posts=posts, pk=thread_id, title=t.title, media_url=MEDIA_URL))
 
 #@login_required
 #def profile(request, pk):
@@ -67,18 +97,18 @@ def thread(request, pk):
 #    return render_to_response("forum/profile.html", add_csrf(request, pf=pf, img=img))
 
 @login_required
-def post(request, ptype, pk):
-    "Display a post form."
-    action = reverse("forum.views.%s" % ptype, args=[pk])
-    if ptype == "new_thread":
+def post(request, post_type, post_id):
+    """Display a post form."""
+    action = reverse("forum.views.%s" % post_type, args=[post_id])
+    if post_type == "new_thread":
         title = "Start New Topic"
         subject = ''
-    elif ptype == "reply":
+    elif post_type == "reply":
         title = "Reply"
-        subject = "Re: " + Thread.objects.get(pk=pk).title
-
-    return render_to_response("forum/post.html", add_csrf(request, subject=subject, action=action,
-        title=title))
+        subject = "Re: " + Post.objects.get(id=post_id).thread.title
+    pf = PostForm()
+    return render_to_response("forum/post.html", add_csrf(
+        request, subject=subject, action=action, title=title, post_form=pf))
 
 #def increment_post_counter(request):
 #    profile = request.user.userprofile_set.all()[0]
@@ -86,29 +116,27 @@ def post(request, ptype, pk):
 #    profile.save()
 
 @login_required
-def new_thread(request, pk):
-    "Start a new thread."
-    p = request.POST
-    if p["subject"] and p["body"]:
-        forum = Forum.objects.get(pk=pk)
-        thread = Thread.objects.create(forum=forum, title=p["subject"], creator=request.user)
-        Post.objects.create(thread=thread, title=p["subject"], body=p["body"], creator=request.user)
-        #increment_post_counter(request)
-    return HttpResponseRedirect(reverse('forum.views.forum', args=[pk]))
+def new_thread(request, board_id):
+    """Start a new thread."""
+    f = PostForm(request.POST)
+    if f.is_valid():
+        p = f.save(commit=False)
+        p.board = Board.objects.get(id=board_id)
+        p.thread = Thread.objects.create(title=p.title, creator=request.user)
+        p.creator = request.user
+        p.save()
+        f.save_m2m()
+    return HttpResponseRedirect(reverse('forum.views.board', args=[board_id]))
 
 @login_required
-def reply(request, pk):
-    "Reply to a thread."
-    p = request.POST
-    if p["body"]:
-        thread = Thread.objects.get(pk=pk)
-        post = Post.objects.create(thread=thread, title=p['subject'], body=p['body'], creator=request.user)
-        #increment_post_counter(request)
-    return HttpResponseRedirect(reverse('forum.views.thread', args=[pk]) + "?page=last")
-
-
-def add_csrf(request, **kwargs):
-    "Add CSRF to dictionary."
-    d = dict(user=request.user, **kwargs)
-    d.update(csrf(request))
-    return d
+def reply(request, post_id):
+    """Reply to a thread."""
+    f = PostForm(request.POST)
+    if f.is_valid():
+        p = f.save(commit=False)
+        p.board = Post.objects.get(id=post_id).board
+        p.thread = Post.objects.get(id=post_id).thread
+        p.creator = request.user
+        p.save()
+        f.save_m2m()
+    return HttpResponseRedirect(reverse('forum.views.board', args=[board_id]))

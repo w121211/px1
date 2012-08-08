@@ -28,12 +28,6 @@
 
     <div class="main">
 
-        <div class="ttitle">{{ title }}</div>
-            <div id="back">
-                <a href="{% url forum.views.forum forum_pk %}">&lt;&lt; back to list of topics</a>
-            </div>
-        <div id="list">
-
             <!-- Posts  -->
             {% for post in posts.object_list %}
                 <div class="post">
@@ -56,6 +50,7 @@
 
                     {{ post.body|linebreaksbr }} <br />
 
+                    <a class="button" href="{% url forum.views.post 'reply' post.id %}">Reply</a>
                     <div class="clear"></div>
                 </div>
             {% endfor %}
@@ -81,7 +76,7 @@
         {% endif %}
 
         <br />
-        <a class="button" href="{% url forum.views.post 'reply' pk %}">Reply</a>
+
 
     </div>
 

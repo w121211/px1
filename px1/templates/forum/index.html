@@ -9,12 +9,22 @@
         .last { border: 0px; }
         .title a { text-decoration: none; }
         .button { background: #999; color: white; padding: 4px; text-decoration: none; }
-
         td { border-bottom: 1px solid #ccc; }
         #list { border: 1px solid #ccc; width: 700px; }
     </style>
 
     <div class="main">
+
+        <div id="reply">
+            <div id="rtitle">{{ title }}</div><br />
+            <form action="{% url forum.views.new_board %}" method="POST">
+                {% csrf_token %}
+                New Board: <input type="text" name="title" size="60" value="{{ board }}" />
+                <input type="submit" value="Submit" id="submit" />
+            </form>
+        </div>
+
+        <br />
 
         <div id="list">
         <table border="0" cellpadding="4" width="100%">
@@ -26,19 +36,18 @@
             </tr>
 
             <!-- Forums  -->
-            {% for forum in forums %}
-            <tr>
-                <td {% if forloop.last %}class="last"{% endif %}>
-                <div class="title"> <a href="{% url forum.views.forum forum.pk %}">{{ forum.title }}</a>
-                    </div></td>
-                <td {% if forloop.last %}class="last"{% endif %}>{{ forum.num_posts }}</td>
-                <td {% if forloop.last %}class="last"{% endif %}>
-                    {{ forum.last_post.short|linebreaksbr }}</td>
-                <td {% if forloop.last %}class="last"{% endif %}>
-                    <a class="button" href="{% url forum.views.forum forum.pk %}">VIEW</a>
-                </td>
-            </tr>
-
+            {% for board in boards %}
+                <tr>
+                    <td {% if forloop.last %}class="last"{% endif %}>
+                        <div class="title"> <a href="{% url forum.views.board board.pk %}">{{ board.title }}</a>
+                        </div></td>
+                    <td {% if forloop.last %}class="last"{% endif %}>{{ board.num_posts }}</td>
+                    <td {% if forloop.last %}class="last"{% endif %}>
+                        {{ board.last_post.short|linebreaksbr }}</td>
+                    <td {% if forloop.last %}class="last"{% endif %}>
+                        <a class="button" href="{% url forum.views.board board.pk %}">VIEW</a>
+                    </td>
+                </tr>
             {% endfor %}
         </table>
         </div>

@@ -1,34 +1,31 @@
-from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
+from django.db import models
 from django.db.models.signals import post_save
+from django.forms import ModelForm
+
+from taggit.managers import TaggableManager
 
 
-class Forum(models.Model):
+class Board(models.Model):
     title = models.CharField(max_length=60)
 
     def __unicode__(self):
         return self.title
 
     def num_posts(self):
-        return sum([t.num_posts() for t in self.thread_set.all()])
+        return self.post_set.count()
+#        return sum([t.num_posts() for t in self.post_set.all()])
 
     def last_post(self):
-        if self.thread_set.count():
-            last = None
-            for t in self.thread_set.all():
-                l = t.last_post()
-                if l:
-                    if not last or l.created > last.created:
-                        last = l
-            return last
+        # TODO(chi): Improve the sorting
+        return self.post_set.latest('created')
 
 
 class Thread(models.Model):
     title = models.CharField(max_length=60)
     created = models.DateTimeField(auto_now_add=True)
     creator = models.ForeignKey(User, blank=True, null=True)
-    forum = models.ForeignKey(Forum)
 
     def __unicode__(self):
         return unicode(self.creator) + " - " + self.title
@@ -48,8 +45,10 @@ class Post(models.Model):
     title = models.CharField(max_length=60)
     created = models.DateTimeField(auto_now_add=True)
     creator = models.ForeignKey(User, blank=True, null=True)
-    thread = models.ForeignKey(Thread)
     body = models.TextField(max_length=10000)
+    thread = models.ForeignKey(Thread)
+    board = models.ForeignKey(Board)
+    tags = TaggableManager()
 
     def __unicode__(self):
         return u"%s - %s - %s" % (self.creator, self.thread, self.title)
@@ -58,9 +57,15 @@ class Post(models.Model):
         return u"%s - %s\n%s" % (self.creator, self.title, self.created.strftime("%b %d, %I:%M %p"))
     short.allow_tags = True
 
-    def profile_data(self):
-        p = self.creator.userprofile_set.all()[0]
-        return p.posts, p.avatar
+
+class PostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'body', 'tags')
+
+#    def profile_data(self):
+#        p = self.creator.userprofile_set.all()[0]
+#        return p.posts, p.avatar
 
 #class UserProfile(models.Model):
 #    avatar = models.ImageField("Profile Pic", upload_to="images/", blank=True, null=True)
