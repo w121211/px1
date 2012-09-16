@@ -1,10 +1,14 @@
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('forum.views',
-#    url(r'^$', 'my_stream'),
+urlpatterns = patterns('stream.views',
+    url(r'^$', 'index'),
 #    url(r'^stream/$', 'stream'),
     url(r'^post/(?P<post_id>\d+)/$', 'view_post'),
-
+    url(r'^thread/(?P<thread_id>\d+)/$', 'view_thread'),
+    url(r'^json/post/$', 'post'),
+    url(r'^json/post/reply/$', 'reply_post'),
+    url(r'^json/push/$', 'push'),
+    url(r'^json/push/get/$', 'get_pushes'),
 #    url(r'^$', 'index'),
 #    url(r'^tag/$', 'tag'),
 #    url(r'^tag/board$', 'tag_board'),

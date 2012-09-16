@@ -34,17 +34,23 @@ def mk_paginator(request, items, num_items):
     return items
 
 def index(request):
-    """listing of available boards."""
+    """Listing of available boards.
+    {forum_url}/
+    """
     boards = Board.objects.all()
     return render_to_response("forum/index.html", add_csrf(request, boards=boards))
 
 def tag(request):
-    """Listing of all tags."""
+    """Listing of all tags.
+    {forum_url}/tag/
+    """
     tags = Tag.objects.all()
     return render_to_response('forum/tag.html', {'tags': tags})
 
 def tag_board(request):
-    """Listing of posts in a board depends on given tags."""
+    """Listing of posts in a board depends on given tags.
+    {forum_url}/tag/board/
+    """
     tags = request.GET.getlist('t')
     posts = Post.objects.filter(tags__name__in=tags).distinct()
     posts = mk_paginator(request, posts, 20)
@@ -52,21 +58,27 @@ def tag_board(request):
                               add_csrf(request, posts=posts))
 
 def board(request, board_id):
-    """Listing of posts in a board."""
+    """Listing of posts in a board.
+    {forum_url}/board/{board_id}/
+    """
     posts = Post.objects.filter(board=board_id).order_by('-created')
     posts = mk_paginator(request, posts, 20)
     return render_to_response("forum/board.html",
                               add_csrf(request, posts=posts, board_id=board_id))
 
 def new_board(request):
-    """Creating a new board"""
+    """Creating a new board
+    {forum_url}/board/new/
+    """
     b = request.POST
     if b['title']:
         Board.objects.create(title=b['title'])
     return HttpResponseRedirect(reverse('forum.views.index'))
 
 def thread(request, thread_id):
-    """Listing of posts in a thread."""
+    """Listing of posts in a thread.
+    {forum_url}/board/thread/{thread_id}/
+    """
     t = Thread.objects.get(id=thread_id)
     posts = Post.objects.filter(thread=t).order_by("created")
     posts = mk_paginator(request, posts, 15)
@@ -96,9 +108,20 @@ def thread(request, thread_id):
 #        img = "/media/" + profile.avatar.name
 #    return render_to_response("forum/profile.html", add_csrf(request, pf=pf, img=img))
 
+
+def view_post(request, post_id):
+    """Display a post.
+    {forum_url}/post/{post_id}/
+    """
+    post = Post.objects.get(id=post_id)
+
+
 @login_required
 def post(request, post_type, post_id):
-    """Display a post form."""
+    """Display a post form.
+    {forum_url}/post/new_thread/{post_id}
+    {forum_url}/post/reply/{post_id}
+    """
     action = reverse("forum.views.%s" % post_type, args=[post_id])
     if post_type == "new_thread":
         title = "Start New Topic"
@@ -117,7 +140,9 @@ def post(request, post_type, post_id):
 
 @login_required
 def new_thread(request, board_id):
-    """Start a new thread."""
+    """Start a new thread.
+    {forum_url}/new_thread/{board_id}
+    """
     f = PostForm(request.POST)
     if f.is_valid():
         p = f.save(commit=False)
@@ -130,7 +155,9 @@ def new_thread(request, board_id):
 
 @login_required
 def reply(request, post_id):
-    """Reply to a thread."""
+    """Reply to a thread.
+    {forum_url}/reply/{post_id}
+    """
     f = PostForm(request.POST)
     if f.is_valid():
         p = f.save(commit=False)
