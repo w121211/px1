@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e60e569b-a739-483d-9342-6890668ee456" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/memory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/templates.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/templates/stream/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/templates/stream/post_test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/admin.py" afterPath="$PROJECT_DIR$/stream/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/models.py" afterPath="$PROJECT_DIR$/stream/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/urls.py" afterPath="$PROJECT_DIR$/stream/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/views.py" afterPath="$PROJECT_DIR$/stream/views.py" />
-    </list>
+    <list default="true" id="e60e569b-a739-483d-9342-6890668ee456" name="Default" comment="" />
     <ignored path="px1.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
