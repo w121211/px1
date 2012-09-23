@@ -1,0 +1,40 @@
+<script id="streamPostTmpl" type="text/x-jquery-tmpl">
+    <div class="streamPost" data-postid="{{ id }}">
+        <div class="streamPostHeader">
+            <p>{{ title }} @{{ user }}</p>
+        </div>
+        <div class="streamPostBody">
+            <p>{{ body }}</p>
+        </div>
+        <div class="streamPostFooter">
+            <ul class="streamPostActions">
+                <li><a href="#" class="reply" data-postid="{{ id }}">reply</a></li>
+                <li><a href="#" class="like" data-postid="{{ id }}">like</a></li>
+                <li><a href="#" class="thread" data-postid="{{ id }}">thread</a></li>
+            </ul>
+            <ul class="streamPostTags">
+                {{#each tags}}
+                <li><a href="#" class="postTag" data-postid="{{ id }}">{{ this }}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="streamPostExpand">
+            <div class="streamPostPush">
+                <ul>
+                    {{#each pushes}}
+                    <li> {{ body }} @{{ user }} </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <textarea class="streamPushTextbox"></textarea>
+            <a href="#">push</a>
+        </div>
+    </div>
+    <div>====================================================</div>
+</script>
+
+<script id="postTmpl" type="text/x-jquery-tmpl">
+    <div class="push">
+        {{ body }} @{{ user }}
+    </div>
+</script>

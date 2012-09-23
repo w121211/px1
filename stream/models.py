@@ -4,7 +4,7 @@ from django.forms import ModelForm
 
 class Thread(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(blank=False, max_length=40)
+    title = models.CharField(max_length=40)
 
     def __unicode__(self):
         return u"%d-%s" % (self.id, self.title)
@@ -16,7 +16,7 @@ class Thread(models.Model):
 class Post(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
-    reply_post = models.ForeignKey('self', null=True)  #TODO one-to-one relationship?
+    reply_post = models.ForeignKey('self', null=True, blank=True)
     thread = models.ForeignKey(Thread)
     title = models.CharField(max_length=40)
     body = models.TextField(max_length=10000)
@@ -24,6 +24,17 @@ class Post(models.Model):
 
     def __unicode__(self):
         return u"%s @%s" % (self.id, self.user)
+
+    def to_json(self):
+        post = {
+            'id': self.id,
+            'thread_id': self.thread_id,
+            'user': self.user.username,
+            'time': self.created_time.isoformat(' '),
+            'title': self.title,
+            'body': self.body
+        }
+        return post
 
     @models.permalink
     def get_absolute_url(self):
@@ -42,7 +53,15 @@ class Push(models.Model):
     def __unicode__(self):
         return u"%s @%s" % (self.body, self.user)
 
+class ThreadForm(ModelForm):
+    class Meta:
+        model = Thread
+
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'body')
+        exclude = ('user','reply_post', 'thread')
+
+class PushForm(ModelForm):
+    class Meta:
+        model = Push

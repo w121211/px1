@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
+<script src="{{ STATIC_URL }}stream/memory.js"></script>
+<script type="text/javascript">
+    $( function() {
+        /* load templates */
+        // console.log(app.templates.streamPost);
+
+        /* ajax calls */
+        loadPosts();
+        registerAllEvents();
+
+        // load posts
+
+        /* testing load posts */
+        // var data = JSON.parse(JSON.stringify(testData));
+        // loadPosts(data.posts);
+    });
+
+    /* elements specific ajax actions */
+    var registerAllEvents = function() {
+        $(document).on("click", "a.reply", replyPost);
+        $(document).on("click", "a.newPost", newPost);
+
+
+        $(document).on("click", "a.thread", loadThread);
+        $(document).on("click", "a.loadPosts", function(event) {
+            event.preventDefault();
+            loadPosts();
+        });
+    };
+
+    var newPost = function(event) {
+        event.preventDefault();
+        $.ajax({
+            url: '{% url stream.views.api_new_post %}',
+            type: 'POST',
+            data: {
+                'title': 'this is a test title',
+                'body': 'this is a test body. a second line'
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                renderMsg(data.msg);
+            }
+        });
+    };
+
+    var replyPost = function(event) {
+        event.preventDefault();
+        console.log($(event.target).data('postid'));
+    };
+
+    var loadPosts = function() {
+        $.ajax({
+            url: '{% url stream.views.api_get_posts %}',
+            type: 'GET',
+            data: {
+                'lp': getLastPostId()
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                renderMsg(data.msg);
+                renderPosts(data.posts);
+            }
+        });
+    };
+
+    var loadThread = function(event) {
+        var $target = $(event.target);
+        // alert("load thread. id:" + $target.attr("postid"));
+        alert("load thread. postid:" + event.target.title);
+    };
+
+    function getLastPostId() {
+        var ids = [];
+        $("div.streamPost").each( function() {
+            ids.push($(this).data('postid'));
+        });
+        if (ids.length == 0) {
+            return 0;
+        }
+        return Math.min.apply(Math, ids);
+    }
+
+    function renderMsg(msg) {
+        $("#msg").text("[msg] " + msg);
+    }
+
+    function renderPosts(posts) {
+        if (posts.length == 0) {
+            $(".loadPosts").hide();
+        }
+        for (var i = 0; i < posts.length; i++) {
+            var tmpl = Handlebars.compile(app.templates.streamPost);
+            var html = tmpl(posts[i]);
+            $("#stream").append(html);
+        }
+    }
+</script>
+<div id="msg"></div>
+<div class="newPost">
+    title:<textarea class="newPostTitle"></textarea>
+    body: <textarea class="newPostBody"></textarea>
+    <a href="#" class="newPost">new post</a>
+</div>
+<div id="stream" class="stream"></div>
+<div>
+    <a href="#" class="loadPosts">[load more posts]</a>
+</div>
