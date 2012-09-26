@@ -13,6 +13,9 @@ class Thread(models.Model):
     def get_absolute_url(self):
         return 'stream.views.view_thread', [str(self.id)]
 
+    class Meta:
+        ordering = ('-created_time',)
+
 class Post(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
@@ -40,6 +43,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         return ('stream.views.view_post', [str(self.id)])
 
+    class Meta:
+        ordering = ('-created_time',)
+
 #    def short(self):
 #        return u"%s - %s\n%s" % (self.creator, self.title, self.created.strftime("%b %d, %I:%M %p"))
 #    short.allow_tags = True
@@ -52,6 +58,9 @@ class Push(models.Model):
 
     def __unicode__(self):
         return u"%s @%s" % (self.body, self.user)
+
+    class Meta:
+        ordering = ('-created_time',)
 
 class ThreadForm(ModelForm):
     class Meta:

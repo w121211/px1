@@ -151,8 +151,9 @@ INSTALLED_APPS = [
 
     # project
 #    'forum',
-    'actstream',
+#    'actstream',
     'stream',
+    'channel',
 ]
 
 # A sample logging configuration. The only tangible logging
