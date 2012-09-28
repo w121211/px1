@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e60e569b-a739-483d-9342-6890668ee456" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/channel/fixtures/initial_da.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/channel/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/ajax.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/test.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stream/static/stream/memory.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channel/models.py" afterPath="$PROJECT_DIR$/channel/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channel/tests.py" afterPath="$PROJECT_DIR$/channel/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/px1/settings.py" afterPath="$PROJECT_DIR$/px1/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/px1/urls.py" afterPath="$PROJECT_DIR$/px1/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/models.py" afterPath="$PROJECT_DIR$/stream/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/static/stream/templates.html" afterPath="$PROJECT_DIR$/stream/static/stream/templates.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/templates/stream/post_test.html" afterPath="$PROJECT_DIR$/stream/templates/stream/post_test.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/tests.py" afterPath="$PROJECT_DIR$/stream/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/urls.py" afterPath="$PROJECT_DIR$/stream/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/views.py" afterPath="$PROJECT_DIR$/stream/views.py" />
     </list>
     <ignored path="px1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,38 +49,63 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/channel/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/channel/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="9" selection-start="797" selection-end="797" vertical-scroll-proportion="0.6107056">
-              <folding>
-                <element signature="e#184#216#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/px1/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="5" selection-start="4710" selection-end="4710" vertical-scroll-proportion="0.0">
+            <state line="30" column="75" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stream/models.py">
+      <file leaf-file-name="utils.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/channel/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="43" selection-start="0" selection-end="44" vertical-scroll-proportion="0.0">
+            <state line="58" column="26" selection-start="1477" selection-end="1477" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post_test.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/templates/stream/post_test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="16" selection-start="138" selection-end="138" vertical-scroll-proportion="-4.48">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajax.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/ajax.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="138" column="0" selection-start="4151" selection-end="4151" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stream/static/stream/core.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="148" column="23" selection-start="4932" selection-end="4932" vertical-scroll-proportion="0.365416">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="templates.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/static/stream/templates.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="54" selection-start="1321" selection-end="1321" vertical-scroll-proportion="23.96">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -85,22 +124,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/stream/templates/stream/post.html" />
-        <option value="$PROJECT_DIR$/stream/static/templates.html" />
-        <option value="$PROJECT_DIR$/stream/templates/stream/base.html" />
-        <option value="$PROJECT_DIR$/stream/static/stream/templates.js" />
-        <option value="$PROJECT_DIR$/stream/static/stream/default.js" />
-        <option value="$PROJECT_DIR$/stream/static/stream/templates.html" />
-        <option value="$PROJECT_DIR$/stream/static/stream/memory.js" />
-        <option value="$PROJECT_DIR$/stream/urls.py" />
-        <option value="$PROJECT_DIR$/stream/templates/stream/post_test.html" />
-        <option value="$PROJECT_DIR$/stream/admin.py" />
-        <option value="$PROJECT_DIR$/stream/views.py" />
-        <option value="$PROJECT_DIR$/taggit/managers.py" />
-        <option value="$PROJECT_DIR$/stream/models.py" />
-        <option value="$PROJECT_DIR$/px1/settings.py" />
+        <option value="$PROJECT_DIR$/channel/fixtures/initial_da.json" />
         <option value="$PROJECT_DIR$/channel/tests.py" />
+        <option value="$PROJECT_DIR$/stream/templates/stream/tmpl_test.html" />
+        <option value="$PROJECT_DIR$/stream/tests.py" />
         <option value="$PROJECT_DIR$/channel/models.py" />
+        <option value="$PROJECT_DIR$/stream/models.py" />
+        <option value="$PROJECT_DIR$/stream/static/stream/memory.js" />
+        <option value="$PROJECT_DIR$/stream/views.py" />
+        <option value="$PROJECT_DIR$/stream/static/stream/test.html" />
+        <option value="$PROJECT_DIR$/stream/urls.py" />
+        <option value="$PROJECT_DIR$/px1/urls.py" />
+        <option value="$PROJECT_DIR$/stream/ajax.py" />
+        <option value="$PROJECT_DIR$/channel/utils.py" />
+        <option value="$PROJECT_DIR$/stream/static/stream/templates.html" />
+        <option value="$PROJECT_DIR$/stream/templates/stream/post_test.html" />
+        <option value="$PROJECT_DIR$/stream/static/stream/core.js" />
       </list>
     </option>
   </component>
@@ -163,7 +202,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="taggit" />
+              <option name="myItemId" value="stream" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -178,6 +217,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="stream" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stream" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="px1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="px1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stream" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stream" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="px1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="px1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -198,7 +281,7 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.tabs" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/Startup/django_apps/django-endless-pagination-1.1" />
@@ -208,9 +291,9 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="FullScreen" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="PublishConfig" serverName="azure" serverId="97be64ba-b2fb-431b-b610-87f193d24e7c" />
   <component name="PyConsoleOptionsProvider">
@@ -243,13 +326,29 @@
       <recent name="$PROJECT_DIR$/px1/apps" />
     </key>
   </component>
-  <component name="RunManager" selected="Query Language Console.Default">
+  <component name="RunManager" selected="Django server.px1">
     <configuration default="false" name="Default" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console" temporary="true">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <RunnerSettings RunnerId="Basic" />
       <ConfigurationWrapper RunnerId="Basic" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="px1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -266,25 +365,6 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="MULTIPROCESS" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <module name="px1" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
@@ -306,6 +386,25 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="px1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -358,6 +457,8 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
     <list size="2">
@@ -414,21 +515,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6707504" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22285251" sideWeight="0.20520674" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22690438" sideWeight="0.474732" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2439222" sideWeight="0.6707504" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22285251" sideWeight="0.45482388" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22690438" sideWeight="0.51454824" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924962" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.49756888" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.49675852" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -499,163 +600,119 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/taggit/admin.py">
+    <entry file="file://$PROJECT_DIR$/stream/templates/stream/post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="256" selection-end="256" vertical-scroll-proportion="0.33226836">
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggit/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggit/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggit/Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggit/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/contrib/contenttypes/generic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="11" selection-start="1019" selection-end="1019" vertical-scroll-proportion="-7.8722043">
-          <folding>
-            <element signature="e#88#123#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggit/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="12" selection-start="3879" selection-end="3879" vertical-scroll-proportion="0.79552716">
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggit/managers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="58" selection-start="5698" selection-end="5698" vertical-scroll-proportion="-0.3948052">
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stream/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="43" selection-start="0" selection-end="44" vertical-scroll-proportion="0.0">
+        <state line="9" column="19" selection-start="405" selection-end="405" vertical-scroll-proportion="0.373057">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/contrib/auth/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="283" column="19" selection-start="10487" selection-end="10487" vertical-scroll-proportion="-0.7518248">
+        <state line="9" column="32" selection-start="339" selection-end="373" vertical-scroll-proportion="0.37402597">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggit/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="32" selection-start="921" selection-end="921" vertical-scroll-proportion="-2.3746958">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/px1/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="5" selection-start="4710" selection-end="4710" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://AlchemyModelDependency/#px1">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>AlchemyModelDependency</ID>
-          <OriginalElement>#px1</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="479.5" y="299.5" />
-          <SelectedNodes />
-          <Categories />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DjangoModelDependency/#px1">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DjangoModelDependency</ID>
-          <OriginalElement>#px1</OriginalElement>
-          <nodes>
-            <node x="" y="">channel.models.VerbTag</node>
-            <node x="" y="">django.contrib.auth.models.Group</node>
-            <node x="" y="">channel.models.NounTag</node>
-            <node x="" y="">django.contrib.auth.models.Permission</node>
-            <node x="" y="">channel.models.Push</node>
-            <node x="" y="">channel.models.Tag</node>
-            <node x="" y="">channel.models.Post</node>
-            <node x="" y="">channel.models.LiveTag</node>
-            <node x="" y="">django.contrib.contenttypes.models.ContentType</node>
-            <node x="" y="">django.contrib.auth.models.User</node>
-            <node x="" y="">channel.models.TermTag</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="177.5" y="100.5" />
-          <SelectedNodes />
-          <Categories />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channel/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/channel/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="9" selection-start="797" selection-end="797" vertical-scroll-proportion="0.6107056">
+        <state line="25" column="37" selection-start="632" selection-end="632" vertical-scroll-proportion="0.4939173">
           <folding>
             <element signature="e#184#216#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="71" selection-start="849" selection-end="912" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/static/stream/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="36" selection-start="469" selection-end="469" vertical-scroll-proportion="25.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/px1/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-7.2530413">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/px1/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="-9.939173">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="75" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="27" selection-start="482" selection-end="482" vertical-scroll-proportion="0.42822385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="26" selection-start="1477" selection-end="1477" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/ajax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="0" selection-start="4151" selection-end="4151" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/static/stream/templates.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="54" selection-start="1321" selection-end="1321" vertical-scroll-proportion="23.96">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/templates/stream/post_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="16" selection-start="138" selection-end="138" vertical-scroll-proportion="-4.48">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/static/stream/core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="23" selection-start="4932" selection-end="4932" vertical-scroll-proportion="0.365416">
+          <folding />
         </state>
       </provider>
     </entry>

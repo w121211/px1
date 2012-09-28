@@ -1,24 +1,90 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
+<style type="text/css">
+    div, ul, li {
+        display: inline;
+    }
+</style>
+<script type="text/javascript">
+    /**
+     * Posts data, used for json test
+     * @type {Object}
+     */
+    var jpost = {
+        "body": "this is a test body",
+        "title": "this is a test",
+        "tags": [{
+            "myvote": true,
+            "votes": 0,
+            "type": "FN",
+            "id": 1,
+            "name": "like"}, {
+            "myvote": false,
+            "votes": 0,
+            "type": "FN",
+            "id": 2,
+            "name": "pin"}, {
+            "myvote": false,
+            "votes": 0,
+            "type": "NN",
+            "id": 3,
+            "name": "test"}],
+        "user": "uuu1",
+        "time": "2012-09-27 04:46:38.494626+00:00",
+        "id": 1
+    };
+
+    // render templates
+    $( function() {
+        console.log(jpost.tags[0]);
+        var src = $('#streamPostTmpl').html();
+        var tmpl = Handlebars.compile(src);
+        var html = tmpl(jpost);
+
+        $("#result").append(html);
+    });
+</script>
+<div id="result"></div>
+
 <script id="streamPostTmpl" type="text/x-jquery-tmpl">
-    <div class="streamPost" data-postid="{{ id }}">
+    <div class="streamPost" data-id="{{ id }}" data-time="{{ time }}">
         <div class="streamPostHeader">
-            <p>{{ title }} @{{ user }}</p>
+            {{ time }}@{{ user }}<br />
+            {{ id }}:{{ title }}<br />
         </div>
+        <br />
         <div class="streamPostBody">
             <p>{{ body }}</p>
         </div>
+        <br />
         <div class="streamPostFooter">
+            actions:
             <ul class="streamPostActions">
                 <li><a href="#" class="reply" data-postid="{{ id }}">reply</a></li>
-                <li><a href="#" class="like" data-postid="{{ id }}">like</a></li>
                 <li><a href="#" class="thread" data-postid="{{ id }}">thread</a></li>
             </ul>
-            <ul class="streamPostTags">
-                {{#each tags}}
-                <li><a href="#" class="postTag" data-postid="{{ id }}">{{ this }}</a></li>
-                {{/each}}
-            </ul>
         </div>
+        <br/>
         <div class="streamPostExpand">
+            <div class="liveTags">
+                tags:
+                <ul>
+                {{#each tags}}
+
+                    <li>
+                        <div class="liveTag">
+                            {{#if myvote}}
+                            <b>{{ name }}</b>-{{ votes }}
+                            {{else}}
+                            <a href="#" class="voteTag" data-id="{{ id }}">{{ name }}</a>-{{ votes }}
+                            {{/if}}
+                        </div>
+                    </li>
+                {{/each}}
+                    <li><textarea class="tagText"></textarea><a href="#" class="addTag">{{ name }}</a></li>
+                </ul>
+            </div>
+            <br />
             <div class="streamPostPush">
                 <ul>
                     {{#each pushes}}
@@ -30,11 +96,23 @@
             <a href="#">push</a>
         </div>
     </div>
+    <br />
     <div>====================================================</div>
+    <br />
 </script>
 
-<script id="postTmpl" type="text/x-jquery-tmpl">
+<script id="pushTmpl" type="text/x-jquery-tmpl">
     <div class="push">
         {{ body }} @{{ user }}
+    </div>
+</script>
+
+<script id="liveTagTmpl" type="text/x-handlebars-template">
+    <div class="liveTag">
+        {{#if myvote}}
+            <b>{{ name }}</b>-{{ votes }}
+        {{else}}
+            <a href="#" class="voteTag" data-id="{{ id }}">{{ name }}</a>-{{ votes }}
+        {{/if}}
     </div>
 </script>

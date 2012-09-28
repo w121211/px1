@@ -9,12 +9,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns("",
-    url(r"^$", direct_to_template, {"template": "homepage.html"}, name="home"),
+    url(r"", include("stream.urls")),
+    url(r"^home/$", direct_to_template, {"template": "homepage.html"}, name="home"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/", include("account.urls")),
-#    url(r'^forum/', include('forum.urls')),
-    url(r"^stream/", include("stream.urls")),
-    url(r'^actstream/', include('actstream.urls')),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

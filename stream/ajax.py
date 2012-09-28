@@ -16,68 +16,6 @@ from stream.models import *
 _tagger = GeneralTagger()
 
 @login_required
-def index(request):
-    """
-    Show an index page
-
-    {domain}/{forum_url}/
-    """
-    threads = Thread.objects.all()
-    return render_to_response('stream/index.html', {'threads': threads})
-
-@login_required
-def test(request):
-    """
-    Show an index page
-
-    {domain}/{stream}/
-    """
-    return render_to_response('stream/post_test.html', context_instance=RequestContext(request))
-
-@login_required()
-def stream(request):
-    """
-    Show a stream page by a given channel or tags. If no specifies, use the default channel (mystream).
-    GET:{
-    't':'t1 t2 t3', # tags
-    'c':''       , # channel id
-    }
-
-    {domain}/{stream}/?t=
-    """
-    if request.method == 'GET':
-        pass
-    else:
-        pass
-    return render_to_response('stream/post_test.html', context_instance=RequestContext(request))
-
-@login_required
-def view_post(request, post_id):
-    """
-    Show a single post and all pushes reply to this post.
-
-    {domain}/{stream}/post/{post_id}/
-    """
-    post = Post.objects.get(id=post_id)
-    pushes = post.push_set.all()
-    return render_to_response('stream/post.html', {
-        'post': post, 'pushes': pushes})
-
-@login_required
-def view_thread(request, thread_id):
-    """
-    Show a single post and all pushes reply to this post.
-
-    {domain}/{stream}/post/{thread_id}/
-    """
-    thread = Thread.objects.get(id=thread_id)
-    posts = thread.post_set.all()
-    post_htmls = list()
-    for post in posts:
-        post_htmls.append(get_post_html(request, post))
-    return render_to_response('stream/thread.html', {'post_htmls': post_htmls})
-
-@login_required
 def get_post_html(request, post):
     """
     Internal use only. Return a html context contains a single post and all pushes reply to this post.
@@ -102,7 +40,7 @@ def api_get_posts(request):
     data = {
         'msg': None,
         'posts': [],
-    }
+        }
     if request.is_ajax() and request.method == 'GET':
         tags = request.GET.get('t', None)
         date = request.GET.get('d', None)
@@ -136,12 +74,12 @@ def _api_get_posts(request):
     data = {
         'msg': None,
         'posts': [],
-    }
+        }
     if request.is_ajax() and request.method == 'GET':
         try:
             if 't' in request.GET:
-                # return channel posts
-#                tags = str(request.GET['t']).split('+')
+            # return channel posts
+            #                tags = str(request.GET['t']).split('+')
                 t = request.GET
                 tag_names = str(t).split('+')
                 print "return posts by given tags"
@@ -177,18 +115,19 @@ def api_new_post(request):
     """
     resp_data = {
         'msg': None,
-    }
+        }
     if request.is_ajax() and request.method == 'POST':
         try:
-            # saving a thread
-#            f = ThreadForm(request.POST)
-#            thread = f.save()
+        # saving a thread
+        #            f = ThreadForm(request.POST)
+        #            thread = f.save()
 
             # saving a post
+            print request.POST
             f = PostForm(request.POST)
             post = f.save(commit=False)
             post.user = request.user
-#            post.thread = thread
+            #            post.thread = thread
             post.save()
 
             # add tags
@@ -232,7 +171,7 @@ def api_push_post(request):
             p.post_id = json['post_id']
             p.body = json['push_body']
             p.save()
-#            print json
+        #            print json
     return HttpResponse("OK")
 
 def api_get_pushes(request):
@@ -251,7 +190,7 @@ def api_get_pushes(request):
                     data.append({
                         'user': push.user.__unicode__(),
                         'body': push.body,
-                    })
+                        })
                 data = simplejson.dumps(data)
     if (data):
         return HttpResponse(data, mimetype='application/json')
@@ -280,4 +219,4 @@ def api_vote_live_tag(request):
         t.vote(request.user)
         resp['votes'] = t.get_votes()
     return HttpResponse(simplejson.dumps(resp, separators=(',', ':')),
-                        mimetype='application/json')
+        mimetype='application/json')

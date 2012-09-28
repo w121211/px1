@@ -27,15 +27,28 @@ class NounTag(TermTag):
         ('H', 'Hub'),
         ('T', 'Terminal'),
         )
-    type = models.CharField(max_length=2, default='NN', editable=False)
-    sub_type = models.CharField(max_length=1, choices=SUB_TYPES)
+#    type = models.CharField(max_length=2, default='NN', editable=False)
+    sub_type = models.CharField(max_length=1, choices=SUB_TYPES, default='T')
+
+    def __init__(self, *args, **kwargs):
+        super(NounTag, self).__init__(*args, **kwargs)
+        self.type = 'NN'
 
     def __unicode__(self):
         return u"%s%s|%s" % (self.type, self.sub_type, self.name)
 
-
 class VerbTag(TermTag):
-    type = models.CharField(max_length=2, default='VB', editable=False)
+
+    def __init__(self, *args, **kwargs):
+        super(VerbTag, self).__init__(*args, **kwargs)
+        self.type = 'VB'
+
+
+class FunctionTag(Tag):
+
+    def __init__(self, *args, **kwargs):
+        super(FunctionTag, self).__init__(*args, **kwargs)
+        self.type = 'FN'
 
 
 class LiveTag(models.Model):
@@ -46,26 +59,21 @@ class LiveTag(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
-    def get_hits(self):
-        return 0
+    def vote(self, user):
+        self.voters.add(user)
 
-    def is_hit(self, user):
-        return False
+    def get_votes(self):
+        return self.voters.count()
+
+    def is_vote(self, user):
+        q = self.voters.filter(id=user.id)
+        if q.count() > 0:
+            return True
+        else:
+            return False
 
     def __unicode__(self):
         return u"%s" % self.tag.name
 
     class Meta:
         unique_together = ('content_type', 'object_id', 'tag')
-
-
-class Push(models.Model):
-    name = models.CharField(max_length=10)
-
-
-class Post(models.Model):
-    name = models.CharField(max_length=10)
-    tags = generic.GenericRelation(LiveTag)
-
-    def __unicode__(self):
-        return u"%s" % self.name

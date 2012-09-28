@@ -126,7 +126,7 @@ WSGI_APPLICATION = "px1.wsgi.application"
 
 TEMPLATE_DIRS = [
     os.path.join(PACKAGE_ROOT, "templates"),
-    os.path.join(PACKAGE_ROOT, "templates", "forum"),
+#    os.path.join(PACKAGE_ROOT, "templates", "forum"),
 ]
 
 INSTALLED_APPS = [
@@ -147,7 +147,7 @@ INSTALLED_APPS = [
     "account",
     "timezones",
     "metron",
-    'taggit',
+#    'taggit',
 
     # project
 #    'forum',

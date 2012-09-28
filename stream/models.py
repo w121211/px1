@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
 from django.db import models
 from django.forms import ModelForm
+
+from channel.models import LiveTag
 
 class Thread(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
@@ -20,22 +23,35 @@ class Post(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     reply_post = models.ForeignKey('self', null=True, blank=True)
-    thread = models.ForeignKey(Thread)
+#    thread = models.ForeignKey(Thread)
     title = models.CharField(max_length=40)
     body = models.TextField(max_length=10000)
-#    tags = TaggableManager()
+    tags = generic.GenericRelation(LiveTag)
 
     def __unicode__(self):
         return u"%s @%s" % (self.id, self.user)
 
-    def to_json(self):
+    def get_tags(self, user):
+        l = list()
+        for t in self.tags.select_related(depth=1).all():
+            l.append({
+                'id': t.id,
+                'type': t.tag.type,
+                'name': t.tag.name,
+                'myvote': t.is_vote(user),
+                'votes': t.get_votes(),
+            })
+        return l
+
+    def to_json(self, user):
         post = {
             'id': self.id,
-            'thread_id': self.thread_id,
+#            'thread_id': self.thread_id,
             'user': self.user.username,
-            'time': self.created_time.isoformat(' '),
+            'time': self.created_time.strftime('%Y-%m-%dT%H:%M:%S'),
             'title': self.title,
-            'body': self.body
+            'body': self.body,
+            'tags': self.get_tags(user),
         }
         return post
 
@@ -69,7 +85,8 @@ class ThreadForm(ModelForm):
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        exclude = ('user','reply_post', 'thread')
+#        include = ('title', 'body')
+        exclude = ('user')
 
 class PushForm(ModelForm):
     class Meta:

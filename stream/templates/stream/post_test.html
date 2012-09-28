@@ -1,113 +1,68 @@
 <!DOCTYPE html>
+<style type="text/css">
+    div, ul, li {
+        display: inline;
+    }
+    #wrap {
+        float: left;
+        width: 800px;
+    }
+    #channelBox {
+        float: left;
+        width: 200px;
+        background: #9c9;
+    }
+    #stream {
+        float: right;
+        width: 600px;
+    }
+    #msg {
+        background: #ff4500;
+    }
+</style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
-<script src="{{ STATIC_URL }}stream/memory.js"></script>
+<script src="{{ STATIC_URL }}stream/core.js"></script>
 <script type="text/javascript">
     $( function() {
-        /* load templates */
-        // console.log(app.templates.streamPost);
-
         /* ajax calls */
-        loadPosts();
+        noodle.ajax.loadPosts();
         registerAllEvents();
-
-        // load posts
 
         /* testing load posts */
         // var data = JSON.parse(JSON.stringify(testData));
         // loadPosts(data.posts);
     });
 
-    /* elements specific ajax actions */
+    /* register elements with specific ajax actions */
     var registerAllEvents = function() {
-        $(document).on("click", "a.reply", replyPost);
-        $(document).on("click", "a.newPost", newPost);
-
-
-        $(document).on("click", "a.thread", loadThread);
-        $(document).on("click", "a.loadPosts", function(event) {
-            event.preventDefault();
-            loadPosts();
-        });
+        $(document).on("click", "a.reply", noodle.ajax.replyPost);
+        $(document).on("click", "a.newPost", noodle.ajax.newPost);
+        $(document).on("click", "a.voteTag", noodle.ajax.voteTag);
+        $(document).on("click", "a.addTag", noodle.ajax.addTag);
+        $(document).on("click", "a.thread", noodle.ajax.loadThread);
+        $(document).on("click", "a.loadPosts", noodle.ajax.loadPosts);
     };
 
-    var newPost = function(event) {
-        event.preventDefault();
-        $.ajax({
-            url: '{% url stream.views.api_new_post %}',
-            type: 'POST',
-            data: {
-                'title': 'this is a test title',
-                'body': 'this is a test body. a second line'
-            },
-            dataType: 'json',
-            success: function(data) {
-                console.log(data);
-                renderMsg(data.msg);
-            }
-        });
-    };
 
-    var replyPost = function(event) {
-        event.preventDefault();
-        console.log($(event.target).data('postid'));
-    };
-
-    var loadPosts = function() {
-        $.ajax({
-            url: '{% url stream.views.api_get_posts %}',
-            type: 'GET',
-            data: {
-                'lp': getLastPostId()
-            },
-            dataType: 'json',
-            success: function(data) {
-                console.log(data);
-                renderMsg(data.msg);
-                renderPosts(data.posts);
-            }
-        });
-    };
-
-    var loadThread = function(event) {
-        var $target = $(event.target);
-        // alert("load thread. id:" + $target.attr("postid"));
-        alert("load thread. postid:" + event.target.title);
-    };
-
-    function getLastPostId() {
-        var ids = [];
-        $("div.streamPost").each( function() {
-            ids.push($(this).data('postid'));
-        });
-        if (ids.length == 0) {
-            return 0;
-        }
-        return Math.min.apply(Math, ids);
-    }
-
-    function renderMsg(msg) {
-        $("#msg").text("[msg] " + msg);
-    }
-
-    function renderPosts(posts) {
-        if (posts.length == 0) {
-            $(".loadPosts").hide();
-        }
-        for (var i = 0; i < posts.length; i++) {
-            var tmpl = Handlebars.compile(app.templates.streamPost);
-            var html = tmpl(posts[i]);
-            $("#stream").append(html);
-        }
-    }
 </script>
-<div id="msg"></div>
-<div class="newPost">
-    title:<textarea class="newPostTitle"></textarea>
-    body: <textarea class="newPostBody"></textarea>
-    <a href="#" class="newPost">new post</a>
-</div>
-<div id="stream" class="stream"></div>
-<div>
-    <a href="#" class="loadPosts">[load more posts]</a>
+<div id="wrap">
+    <div id="channelBox"  class="channelBox">
+        <div class="channel">Channel 1</div>
+    </div>
+    <div id="stream" class="stream">
+        <div id="msg">[msg]</div><br />
+        <div class="newPost">
+            title:<textarea class="newPostTitle"></textarea>
+            body: <textarea class="newPostBody"></textarea>
+            tags: <textarea class="newPostTags"></textarea>
+            <a href="#" class="newPost">auto tag</a>
+            <a href="#" class="newPost">new post</a>
+        </div>
+        <p>*************************************************************</p>
+        <div id="streamBody"  class="streamBody"></div>
+        <div class="streamFooter">
+            <a href="#" class="loadPosts">[load more posts]</a>
+        </div>
+    </div>
 </div>
