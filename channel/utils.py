@@ -55,8 +55,9 @@ class NounTagger(TermTagger):
 #            t = self.get_tag(tag_name)
         except Tag.DoesNotExist:
             t = NounTag.objects.create(name=tag_name)
-        l = self._tag(object, t, user)
-        l.voters.add(user)
+        live_tag = self._tag(object, t, user)
+        live_tag.voters.add(user)
+        return live_tag
 
     def search(self, queryset, tag_names):
         '''

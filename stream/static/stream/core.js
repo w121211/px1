@@ -1,4 +1,39 @@
 /**
+ * Init page
+ */
+$( function() {
+    /* ajax calls */
+    initPageEvents();
+    registerAllEvents();
+
+    /* testing load posts */
+    // var data = JSON.parse(JSON.stringify(testData));
+    // loadPosts(data.posts);
+});
+
+var initPageEvents = function() {
+    noodle.ajax.loadPosts();
+    noodle.ajax.loadChannels();
+};
+
+/* register elements with specific ajax actions */
+var registerAllEvents = function() {
+    $(document).on("click", "a.loadPosts", noodle.ajax.loadPosts);
+    $(document).on("click", "a.newPost", noodle.ajax.newPost);
+    $(document).on("click", "a.replyPost", noodle.ajax.replyPost);
+    $(document).on("keypress", "textarea.pushText", noodle.ajax.pushPost);
+    $(document).on("click", "a.tagPost", noodle.ajax.tagPost);
+
+    $(document).on("click", "a.voteTag", noodle.ajax.voteTag);
+
+    $(document).on("click", "a.viewThread", noodle.ajax.loadThread);
+
+    $(document).on("", "", noodle.ajax.loadChannels);
+    $(document).on("click", "a.viewThread", noodle.ajax.newChannel);
+    $(document).on("click", "a.viewThread", noodle.ajax.tagChannel);
+};
+
+/**
  * General library
  * @return {*}
  */
@@ -77,17 +112,51 @@ function ajax() {
 
     this.replyPost = function(event) {
         event.preventDefault();
-        console.log($(event.target).data('postid'));
+        console.log($(event.target).data('id'));
         console.log(getLatestPostTime());
     };
 
     this.pushPost = function(event) {
+        // if enter key is pressed
+        if (event.which == 13) {
+            var $target = $(event.target);
+            console.log($target.val());
+            $.ajax({
+                url: 'api/post/pu/',
+                type: 'POST',
+                data: {
+                    'id': $target.parents('div.post').data('id'),   // post id
+                    'body': $target.val() // push body
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    noodle.render.renderMsg(data.msg);
+                    noodle.render.renderPushes(data.pushes);
+                }
+            });
+            $target.val("");
+            return false;
+        }
     };
 
     this.tagPost = function(event) {
         event.preventDefault();
         var $target = $(event.target);
-        console.log($target.prev('textarea.tagText').val());
+        $.ajax({
+            url: 'api/post/tag/',
+            type: 'GET',
+            data: {
+                'id': $target.parents('div.post').data('id'),   // post id
+                'tag': $target.prev('textarea.tagText').val()   // tag name
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                noodle.render.renderMsg(data.msg);
+                noodle.render.renderTags(data.tags);
+            }
+        });
     };
 
     this.voteTag = function(event) {
@@ -110,6 +179,10 @@ function ajax() {
         });
     };
 
+    this.loadPush = function(event) {
+
+    };
+
     this.loadThread = function(event) {
         var $target = $(event.target);
         // alert("load thread. id:" + $target.attr("postid"));
@@ -117,6 +190,7 @@ function ajax() {
     };
 
     this.loadChannels = function(event) {
+
     };
 
     this.newChannel = function(event) {
@@ -130,78 +204,43 @@ function ajax() {
 function render() {
 
     this.renderMsg = function(msg) {
-        //console.log("[msg] " + msg);
         $("#msg").text("[msg] " + msg);
     };
 
-    this.renderPosts= function(posts) {
+    this.renderPosts = function(posts) {
         if (posts.length == 0) {
             $(".loadPosts").hide();
         }
+
+        var $streamBody = $("#streamBody");
         for (var i = 0; i < posts.length; i++) {
             var tmpl = Handlebars.compile(noodle.tmpl.streamPost);
             var html = tmpl(posts[i]);
-            $("#streamBody").append(html);
+            $streamBody.append(html);
         }
+    };
+
+    this.renderTags = function(tags, postID) {
+        var $div = $("#po"+postID).children("div.liveTags");
+        for (var i = 0; i < tags.length; i++) {
+            var tmpl = Handlebars.compile(noodle.tmpl);
+            var html = tmpl(tags[i]);
+            $div.append(html);
+        }
+    };
+
+    this.renderPushes = function(pushes, postID) {
+        var $div = $("#po"+postID).children("div.pushes");
+        for (var i = 0; i < pushes.length; i++) {
+            var tmpl = Handlebars.compile(noodle.tmpl);
+            var html = tmpl(pushes[i]);
+            $div.append(html);
+        }
+    };
+
+    this.renderChannels = function(channels) {
+
     };
 }
 
 var noodle = new app();
-
-/**
- * Posts data, used for json test
- * @type {Object}
- */
-var jpost = {
-    "body": "",
-    "title": "",
-    "tags": [{
-        "myvote": false,
-        "votes": 0,
-        "type": "FN",
-        "id": 1,
-        "name": "like"}, {
-        "myvote": false,
-        "votes": 0,
-        "type": "FN",
-        "id": 2,
-        "name": "pin"}, {
-        "myvote": false,
-        "votes": 0,
-        "type": "NN",
-        "id": 3,
-        "name": "test"}],
-    "user": "uuu1",
-    "time": "2012-09-27 04:46:38.494626+00:00",
-    "id": 1
-};
-
-var post1 = {
-    "id": 1,
-    "threadId": 10,
-    "user": "user1",
-    "time": "time data",
-    "title": "post1 test",
-    "body": "this is a post1 test...\n 2nd line test. New line is still a bug",
-    "pushes": [
-        {
-            "id": 1,
-            "user": "user5",
-            "time": "time data",
-            "body": "this is a push body 1"
-        },
-        {
-            "id": 2,
-            "user": "user6",
-            "time": "time data",
-            "body": "this is a push body 2"
-        }
-    ],
-    "tags": ["tag1", "tag2"],
-    "likeNum": 8
-};
-var posts = [post1, post1, post1];
-var testData = {
-    "msg": "ok",
-    "posts": posts
-};

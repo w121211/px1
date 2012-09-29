@@ -9,13 +9,19 @@ urlpatterns = patterns('stream.views',
 )
 
 urlpatterns += patterns('stream.ajax',
-    url(r'^api/post/get/$', 'api_get_posts'),
-    url(r'^api/post/new/$', 'api_new_post'),
-    url(r'^api/post/re/$', 'api_reply_post'),
-    url(r'^api/post/pu/$', 'api_push_post'),
-
-    url(r'^api/push/get/$', 'api_get_pushes'),
-
-    url(r'^api/tag/add/$', 'api_add_tag'),
-    url(r'^api/tag/vote/$', 'api_vote_live_tag'),
+    # actions of post
+    url(r'^api/post/get/$', 'get_posts'),
+    url(r'^api/post/new/$', 'new_post'),
+    url(r'^api/post/re/$', 'reply_post'),
+    url(r'^api/post/pu/$', 'push_post'),
+    url(r'^api/post/tag/$', 'tag_post'),
+    # actions of push
+    url(r'^api/push/get/$', 'get_pushes'),
+    # actions of tag
+    url(r'^api/tag/vote/$', 'vote_live_tag'),
+    # actions of channel
+    url(r'^api/cha/get/$', 'get_channels'),
+    url(r'^api/cha/new/$', 'new_channel'),
+    url(r'^api/cha/tag/$', 'tag_channel'),
+    # actions of thread
 )

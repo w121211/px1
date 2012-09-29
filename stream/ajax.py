@@ -12,18 +12,15 @@ from account.decorators import login_required
 from channel.models import *
 from channel.utils import *
 from stream.models import *
+from stream.decorators import ajax_view
+
+POSTS_PER_PAGE = 5
 
 _tagger = GeneralTagger()
 
-@login_required
-def get_post_html(request, post):
-    """
-    Internal use only. Return a html context contains a single post and all pushes reply to this post.
-
-    """
-    pushes = post.push_set.all()
-    return render_to_string('stream/post.html', {
-        'post': post, 'pushes': pushes})
+def _response(resp_data):
+    resp = simplejson.dumps(resp_data, separators=(',', ':'))
+    return HttpResponse(resp, mimetype='application/json')
 
 def _paginate(queryset, item_num, time=None):
     """
@@ -34,80 +31,33 @@ def _paginate(queryset, item_num, time=None):
     else:
         return queryset.filter(created_time__lt=time)[:item_num]
 
-@login_required
-def api_get_posts(request):
-    POSTS_PER_PAGE = 2
-    data = {
+@ajax_view
+def get_posts(request):
+    resp = {
         'msg': None,
         'posts': [],
         }
-    if request.is_ajax() and request.method == 'GET':
-        tags = request.GET.get('t', None)
-        date = request.GET.get('d', None)
+    tags = request.GET.get('t', None)
+    date = request.GET.get('d', None)
 
-        qs = Post.objects.all()
-        if len(tags) == 0:
-            # return my_stream posts
-            qs = _paginate(qs, 5, date)
-        else:
-            # return posts by given tags
-            tags = str(tags).split('+')
-            qs = _tagger.search(qs, tags, request.user)
+    qs = Post.objects.all()
+    if len(tags) == 0: # return my_stream posts
+        qs = _paginate(qs, POSTS_PER_PAGE, date)
+    else: # return posts by given tags
+        tags = str(tags).split('+')
+        qs = _tagger.search(qs, tags, request.user)
 
-        if qs.count() != 0:
-            data['msg'] = 'ok'
-            for post in qs:
-                data['posts'].append(post.to_json(request.user))
-        else:
-            data['msg'] = 'no posts'
-        data = simplejson.dumps(data, separators=(',', ':'))
-    return HttpResponse(data, mimetype='application/json')
-
-@login_required
-def _api_get_posts(request):
-    """
-    Return posts(json) by an ajax call.
-
-    {domain}//api/post/get/
-    """
-    POSTS_PER_PAGE = 2
-    data = {
-        'msg': None,
-        'posts': [],
-        }
-    if request.is_ajax() and request.method == 'GET':
-        try:
-            if 't' in request.GET:
-            # return channel posts
-            #                tags = str(request.GET['t']).split('+')
-                t = request.GET
-                tag_names = str(t).split('+')
-                print "return posts by given tags"
-                print t
-            else:
-                # return my_stream posts
-                last_post_id = int(request.GET['lp'])
-                print "last pd: %d" % last_post_id
-                if (last_post_id <= 0):
-                    posts = Post.objects.all()
-                else:
-                    posts = Post.objects.filter(id__lt=last_post_id)
-                posts = posts.order_by('-created_time')[:POSTS_PER_PAGE]
-
-                if posts:
-                    for post in posts:
-                        data['posts'].append(post.to_json(request.user))
-                    data['msg'] = 'ok'
-                else:
-                    data['msg'] = 'no posts'
-        except:
-            print "Unexpected error:", sys.exc_info()[0]
-            raise
-    return HttpResponse(simplejson.dumps(data, separators=(',', ':')), mimetype='application/json')
+    for post in qs:
+        resp['posts'].append(post.to_json(request.user))
+    if len(resp['posts']) > 0:
+        resp['msg'] = 'ok'
+    else:
+        resp['msg'] = 'no posts'
+    return _response(resp)
 
 # TODO fix ajax redirect (302) error. (1) add ajaxRedirectResponse (2) using view div to display html
 @login_required
-def api_new_post(request):
+def new_post(request):
     """
     an ajax action. Submit a new post.
 
@@ -138,7 +88,7 @@ def api_new_post(request):
     return HttpResponse()
 
 @login_required
-def api_reply_post(request):
+def reply_post(request):
     """
     AJAX action. Reply a post.
 
@@ -157,7 +107,7 @@ def api_reply_post(request):
     return HttpResponse("OK")
 
 @login_required
-def api_push_post(request):
+def push_post(request):
     """
     AJAX action.
 
@@ -174,11 +124,29 @@ def api_push_post(request):
         #            print json
     return HttpResponse("OK")
 
-def api_get_pushes(request):
+ajax_view
+def tag_post(request):
+    """
+    User tag a specified post.
+    {domain}/api/tag/post/
+    """
+    resp = {
+        'msg': '',
+        'tag': '',
+    }
+    p = request.GET.get('id', None)
+    t = request.GET.get('t', None)
+    if p or t:
+        resp['msg'] = 'error: empty tag or post'
+    else:
+        _tagger.noun.tag(p, t, request.user)
+        resp['tag'] = t
+    return _response(resp)
+
+def get_pushes(request):
     """
     AJAX action.
-
-    {domain}/{stream}/json/push/get/
+    {domain}/json/push/get/
     """
     data = None
     if (request.is_ajax()):
@@ -197,15 +165,7 @@ def api_get_pushes(request):
     else:
         return HttpResponse('fail')
 
-def api_add_tag(request):
-    """
-    An ajax action, user can add a tag to a specified post.
-
-    {domain}/api/tag/add/
-    """
-    pass
-
-def api_vote_live_tag(request):
+def vote_live_tag(request):
     """
     An ajax action, user can vote a live tag (a tag of an object) with a given live tag id.
 
@@ -220,3 +180,12 @@ def api_vote_live_tag(request):
         resp['votes'] = t.get_votes()
     return HttpResponse(simplejson.dumps(resp, separators=(',', ':')),
         mimetype='application/json')
+
+def get_channels(request):
+    pass
+
+def new_channel(request):
+    pass
+
+def tag_channel(request):
+    pass

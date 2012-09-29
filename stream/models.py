@@ -33,14 +33,8 @@ class Post(models.Model):
 
     def get_tags(self, user):
         l = list()
-        for t in self.tags.select_related(depth=1).all():
-            l.append({
-                'id': t.id,
-                'type': t.tag.type,
-                'name': t.tag.name,
-                'myvote': t.is_vote(user),
-                'votes': t.get_votes(),
-            })
+        for t in self.tags.select_related(depth=5).all():
+            l.append(t.to_json(user))
         return l
 
     def to_json(self, user):

@@ -1,8 +1,25 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
+<script src="core.js"></script>
 <style type="text/css">
     div, ul, li {
         display: inline;
+    }
+    #wrap {
+        float: left;
+        width: 800px;
+    }
+    #channelBox {
+        float: left;
+        width: 200px;
+        background: #9c9;
+    }
+    #stream {
+        float: right;
+        width: 600px;
+    }
+    #msg {
+        background: #ff4500;
     }
 </style>
 <script type="text/javascript">
@@ -37,82 +54,91 @@
     // render templates
     $( function() {
         console.log(jpost.tags[0]);
-        var src = $('#streamPostTmpl').html();
+        var src = $('#streamPost').html();
         var tmpl = Handlebars.compile(src);
+        Handlebars.registerPartial("liveTags", $('#liveTags').html());
+        Handlebars.registerPartial("pushes", $('#pushes').html());
         var html = tmpl(jpost);
-
-        $("#result").append(html);
+        $("#streamBody").append(html);
+        $("#streamBody").append(html);
+        $("#streamBody").append(html);
     });
 </script>
-<div id="result"></div>
+<div id="wrap">
+    <div id="channelBox"  class="channelBox">
+        <div class="channel">Channel 1</div>
+    </div>
+    <div id="stream" class="stream">
+        <div id="msg">[msg]</div><br />
+        <div class="newPost">
+            title:<textarea class="newPostTitle"></textarea>
+            body: <textarea class="newPostBody"></textarea>
+            tags: <textarea class="newPostTags"></textarea>
+            <a href="#" class="autoTag">auto tag</a>
+            <a href="#" class="newPost">new post</a>
+        </div>
+        <p>************************************************************************</p>
+        <div id="streamBody"  class="streamBody"></div>
+        <div class="streamFooter">
+            <a href="#" class="loadPosts">[load more posts]</a>
+        </div>
+    </div>
+</div>
 
-<script id="streamPostTmpl" type="text/x-jquery-tmpl">
-    <div class="streamPost" data-id="{{ id }}" data-time="{{ time }}">
-        <div class="streamPostHeader">
+<script id="streamPost" type="text/x-handlebars-template">
+    <div class="post" id="po{{ id }}"data-id="{{ id }}" data-time="{{ time }}">
+        <div class="postHeader">
             {{ time }}@{{ user }}<br />
-            {{ id }}:{{ title }}<br />
-        </div>
-        <br />
-        <div class="streamPostBody">
+            {{ id }}-{{ title }}<br />
+        </div><br>
+        <div class="postBody">
             <p>{{ body }}</p>
-        </div>
-        <br />
-        <div class="streamPostFooter">
-            actions:
-            <ul class="streamPostActions">
-                <li><a href="#" class="reply" data-postid="{{ id }}">reply</a></li>
-                <li><a href="#" class="thread" data-postid="{{ id }}">thread</a></li>
-            </ul>
-        </div>
-        <br/>
-        <div class="streamPostExpand">
-            <div class="liveTags">
-                tags:
-                <ul>
-                {{#each tags}}
-
-                    <li>
-                        <div class="liveTag">
-                            {{#if myvote}}
-                            <b>{{ name }}</b>-{{ votes }}
-                            {{else}}
-                            <a href="#" class="voteTag" data-id="{{ id }}">{{ name }}</a>-{{ votes }}
-                            {{/if}}
-                        </div>
-                    </li>
-                {{/each}}
-                    <li><textarea class="tagText"></textarea><a href="#" class="addTag">{{ name }}</a></li>
-                </ul>
+        </div><br>
+        <div class="postFooter">
+            <div class="postActions">
+                <a href="#" class="replyPost" data-postid="{{ id }}">reply</a>
+                <a href="#" class="viewThread" data-postid="{{ id }}">thread</a>
             </div>
-            <br />
-            <div class="streamPostPush">
-                <ul>
-                    {{#each pushes}}
-                    <li> {{ body }} @{{ user }} </li>
-                    {{/each}}
-                </ul>
+        </div><br>
+        <div class="postExpand">
+            <div class="liveTags">{{> liveTags }}</div><br>
+            <div class="pushes">{{> pushes }}</div>
+            <div class="pushForm">
+                push: <textarea class="pushText"></textarea>
             </div>
-            <textarea class="streamPushTextbox"></textarea>
-            <a href="#">push</a>
+            <div class="postReplyForm">
+            </div>
         </div>
     </div>
-    <br />
-    <div>====================================================</div>
-    <br />
+    <p>***********************************************************************</p>
 </script>
 
-<script id="pushTmpl" type="text/x-jquery-tmpl">
-    <div class="push">
-        {{ body }} @{{ user }}
-    </div>
-</script>
-
-<script id="liveTagTmpl" type="text/x-handlebars-template">
+<script id="liveTags" type="text/x-handlebars-template">
+    {{#each tags}}
     <div class="liveTag">
         {{#if myvote}}
-            <b>{{ name }}</b>-{{ votes }}
+        <b>{{ name }}</b>-{{ votes }}
         {{else}}
-            <a href="#" class="voteTag" data-id="{{ id }}">{{ name }}</a>-{{ votes }}
+        <a href="#" class="voteTag" data-id="{{ id }}">{{ name }}</a>-{{ votes }}
         {{/if}}
     </div>
+    {{/each}}
+    <textarea class="newTag"></textarea>
+    <a href="#" class="tagPost">add tag</a>
+</script>
+
+<script id="pushes" type="text/x-handlebars-template">
+    {{#each pushes}}
+    <div class="push">
+        {{ body }}@{{ user }}
+        <div class="postLiveTag">
+            {{#if myvote}}
+            <b>{{ name }}</b>-{{ votes }}
+            {{else}}
+            <a href="#" class="voteTag" data-id="{{ id }}">{{ name }}</a>-{{ votes }}
+            {{/if}}
+        </div>
+    </div>
+    <br>
+    {{/each}}
 </script>

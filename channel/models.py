@@ -59,6 +59,9 @@ class LiveTag(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
+    def __unicode__(self):
+        return u"%s" % self.tag.name
+
     def vote(self, user):
         self.voters.add(user)
 
@@ -72,8 +75,15 @@ class LiveTag(models.Model):
         else:
             return False
 
-    def __unicode__(self):
-        return u"%s" % self.tag.name
+    def to_json(self, user):
+        j = {
+            'id': self.id,
+            'type': self.tag.type,
+            'name': self.tag.name,
+            'myvote': self.is_vote(user),
+            'votes': self.get_votes(),
+        }
+        return j
 
     class Meta:
         unique_together = ('content_type', 'object_id', 'tag')
