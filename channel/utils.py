@@ -1,34 +1,33 @@
 from channel.models import *
+from django.db import IntegrityError
 from django.db.models import Q
+
+AUTO_USER_NAME = 'autorobo'
+AUTO_USER_PWD = 'autorobo'
+LIKE_TAG_NAME = 'like'
 
 class BaseTagger(object):
     def _tag(self, object, tag, user):
-        l = LiveTag.objects.create(content_object=object, tag=tag, tagger=user)
-        return l
+        live_tag = LiveTag.objects.create(content_object=object, tag=tag, user=user)
+        return live_tag
 
     def get_tag(self, name):
         return Tag.objects.get(name=name)
 
 
 class FunctionTagger(BaseTagger):
-    tag_name = None
-    tag_id = None
-    auto_user = User.objects.get(username='auto')
-
     def __init__(self, tag_name):
-        self.tag_name = tag_name
-        self.tag_id = Tag.objects.get(name=tag_name).id
+        self.auto_user, created = User.objects.get_or_create(username=AUTO_USER_NAME, password=AUTO_USER_PWD)
+        self.tag_obj, created = FunctionTag.objects.get_or_create(user=self.auto_user, name=tag_name)
 
     def tag(self, object):
-        LiveTag.objects.create(content_object=object, tag_id=self.tag_id, tagger=self.auto_user)
+        return self._tag(object, self.tag_obj, self.auto_user)
 
 
 class LikeTagger(FunctionTagger):
     def search(self, queryset, user):
-        '''
-        Get all objects which the user vote 'like'
-        '''
-        qs = queryset.filter(tags__tag_id=self.tag_id, tags__voters=user)
+        "Get all objects which the user vote 'like'"
+        qs = queryset.filter(tags__tag=self.tag_obj, tags__voters=user)
         return qs
 
 
@@ -52,38 +51,40 @@ class NounTagger(TermTagger):
     def tag(self, object, tag_name, user):
         try:
             t = Tag.objects.get(name=tag_name)
-#            t = self.get_tag(tag_name)
         except Tag.DoesNotExist:
-            t = NounTag.objects.create(name=tag_name)
+            t = NounTag.objects.create(name=tag_name, user=user)
         live_tag = self._tag(object, t, user)
         live_tag.voters.add(user)
         return live_tag
 
     def search(self, queryset, tag_names):
-        '''
-        Compute an && query, get all objects tagged with given tags.
-        '''
-        names = set(tag_names)
-        qs = queryset.filter(tags__tag__type='NN')
-        for n in names:
-            qs = qs.filter(tags__tag__name=n)
-        return qs
+        "Compute an && query, get all objects tagged with given tags."
+        for n in tag_names:
+            queryset = queryset.filter(tags__tag__name=n)
+        return queryset
 
 
 class GeneralTagger(object):
-    like = LikeTagger('like')
-    noun = NounTagger()
+    def __init__(self):
+        self.like = LikeTagger(LIKE_TAG_NAME)
+        self.noun = NounTagger()
 
     def search(self, queryset, tag_names, user=None):
-        names = set(tag_names)
-
-        if self.like.name in names and user is not None:
-            names.remove(self.like.name)
-            qs = self.like.get_queryset(queryset, user)
-
-            # quere for '#like' & ('#tt1' & '#tt2' & ...)
-            if len(names) > 0:
-                qs = self.term.get_queryset(qs, names)
+        tag_names = set(tag_names)
+        fun_names = [LIKE_TAG_NAME]
+        fun_names = set(fun_names)
+        if LIKE_TAG_NAME in tag_names and user:
+            tag_names.remove(self.like.tag_obj.name)
+            qs = self.like.search(queryset, user)
+            if tag_names:
+                # quere for 'like' & ('tt1' & 'tt2' & ...)
+                qs = self.noun.search(qs, tag_names)
         else:
-            qs = self.term.get_queryset(queryset, names)
+            tag_names -= fun_names
+            qs = self.noun.search(queryset, tag_names)
         return qs
+
+    def vote(self, live_tag_id, user):
+        live_tag = LiveTag.objects.select_related().get(id=live_tag_id)
+        live_tag.vote(user=user)
+        return live_tag

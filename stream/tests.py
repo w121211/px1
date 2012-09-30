@@ -8,43 +8,29 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 
 from channel.models import *
-from channel.tests import InitTest as ChannelInitTest
 from stream.models import *
 
+class ModelTest(object):
+    """
+    # test basic models
+    >>> f = {'title': 'ttt', 'body': 'bbb'}
+    >>> f = PostForm(f)
+    >>> po1 = f.save(commit=False)
+    >>> u = User.objects.create_user(username='uuu1', password='uuu1')
+    >>> po1.user = u
+    >>> po1.save()
+    >>> po1.to_json(u)
+    {'body': 'bbb', 'title': 'ttt', 'tags': [], 'reid': None, 'user': 'uuu1', 'time': '2012-09-29T16:45:45', 'id': 1}
+    >>> pu1 = Push.objects.create(user=u, body='bb', post=po1)
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
-
-class InitTest(object):
-    def init_data(self):
-        try:
-            # require channel.tests.InitTest.init_data() to run first
-            i = ChannelInitTest()
-            i.init_data()
-        except:
-            print "data is exist"
-
-        # create test users
-        auto = User.objects.create_user(username='auto', password='auto')
-        u1 = User.objects.create_user(username='uuu1', password='uuu1')
-        u2 = User.objects.create_user(username='uuu2', password='uuu2')
-        u3 = User.objects.create_user(username='uuu3', password='uuu3')
-
-        # create posts
-        p1 = Post.objects.create(user=u1)
-        p2 = Post.objects.create(user=u2)
-
-        # create live tags
-        t1 = Tag.objects.get(name='like')
-        t2 = Tag.objects.get(name='pin')
-        t3 = Tag.objects.get(name='test')
-        LiveTag.objects.create(content_object=p1, tag=t1, tagger=auto)
-        LiveTag.objects.create(content_object=p1, tag=t2, tagger=auto)
-        LiveTag.objects.create(content_object=p1, tag=t3, tagger=u1)
-        LiveTag.objects.create(content_object=p2, tag=t1, tagger=auto)
-        LiveTag.objects.create(content_object=p2, tag=t2, tagger=auto)
-        LiveTag.objects.create(content_object=p2, tag=t3, tagger=u2)
+    # test tagging
+    >>> from channel.utils import GeneralTagger
+    >>> g = GeneralTagger()
+    >>> l = g.like.tag(po1)
+    >>> l = g.noun.tag(po1, 'test', u)
+    >>> l = g.like.tag(pu1)
+    >>> pu1.to_json(u)
+    {'body': 'bb', 'user': 'uuu1', 'tags': [{'myvote': False, 'votes': 0, 'type': u'FN', 'id': 3, 'name': u'like'}]}
+    >>> po1.to_json(u)
+    {'body': 'bbb', 'title': 'ttt', 'tags': [{'myvote': False, 'votes': 0, 'type': u'FN', 'id': 1, 'name': u'like'}, {'myvote': True, 'votes': 1, 'type': u'NN', 'id': 2, 'name': u'test'}], 'reid': None, 'user': 'uuu1', 'time': '2012-09-29T16:49:13', 'id': 1}
+    """

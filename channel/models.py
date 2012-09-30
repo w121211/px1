@@ -10,6 +10,8 @@ class Tag(models.Model):
         ('JJ', 'Adjective'),
         ('FN', 'Function'),
         )
+    time = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User)
     name = models.SlugField(max_length=50, unique=True)
     type = models.CharField(max_length=2, choices=TYPES)
 
@@ -27,7 +29,6 @@ class NounTag(TermTag):
         ('H', 'Hub'),
         ('T', 'Terminal'),
         )
-#    type = models.CharField(max_length=2, default='NN', editable=False)
     sub_type = models.CharField(max_length=1, choices=SUB_TYPES, default='T')
 
     def __init__(self, *args, **kwargs):
@@ -38,14 +39,12 @@ class NounTag(TermTag):
         return u"%s%s|%s" % (self.type, self.sub_type, self.name)
 
 class VerbTag(TermTag):
-
     def __init__(self, *args, **kwargs):
         super(VerbTag, self).__init__(*args, **kwargs)
         self.type = 'VB'
 
 
 class FunctionTag(Tag):
-
     def __init__(self, *args, **kwargs):
         super(FunctionTag, self).__init__(*args, **kwargs)
         self.type = 'FN'
@@ -53,7 +52,7 @@ class FunctionTag(Tag):
 
 class LiveTag(models.Model):
     tag = models.ForeignKey(Tag)
-    tagger = models.ForeignKey(User, related_name='tagged_livetags')
+    user = models.ForeignKey(User, related_name='tagged_livetags')
     voters = models.ManyToManyField(User, related_name='voted_livetags')
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
@@ -87,3 +86,10 @@ class LiveTag(models.Model):
 
     class Meta:
         unique_together = ('content_type', 'object_id', 'tag')
+
+class Item(models.Model):
+    user = models.ForeignKey(User)
+    tags = generic.GenericRelation(LiveTag)
+
+    def __unicode__(self):
+        return u"%d:%s" % (self.id, self.tags.all())

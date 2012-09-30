@@ -188,4 +188,9 @@ def new_channel(request):
     pass
 
 def tag_channel(request):
+    "add a tag from a channel"
+    pass
+
+def untag_channel(request):
+    "remove a tag from a channel"
     pass
