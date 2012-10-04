@@ -154,6 +154,7 @@ INSTALLED_APPS = [
 #    'actstream',
     'stream',
     'channel',
+    'nlp',
 ]
 
 # A sample logging configuration. The only tangible logging

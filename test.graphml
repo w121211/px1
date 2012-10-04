@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="utf-8"?><graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key attr.name="weight" attr.type="double" for="edge" id="d1" />
+  <key attr.name="pr" attr.type="double" for="node" id="d0" />
+  <graph edgedefault="directed">
+    <node id="iPad">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="產業">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="世界">
+      <data key="d0">0.0138083870282</data>
+    </node>
+    <node id="熱情">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="價值">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="產品">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="科技">
+      <data key="d0">0.0133814907391</data>
+    </node>
+    <node id="朋友">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="能力">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="市場">
+      <data key="d0">0.0122802968554</data>
+    </node>
+    <node id="工作">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="Mac">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="總裁">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="機器">
+      <data key="d0">0.00811998813043</data>
+    </node>
+    <node id="全球">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="雲端">
+      <data key="d0">0.00759030720825</data>
+    </node>
+    <node id="500">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="健身">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="研究">
+      <data key="d0">0.0129348003024</data>
+    </node>
+    <node id="設計">
+      <data key="d0">0.0144281977974</data>
+    </node>
+    <node id="生態">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="個人">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="問題">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="方式">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="App">
+      <data key="d0">0.00953950911677</data>
+    </node>
+    <node id="程式">
+      <data key="d0">0.0103439464463</data>
+    </node>
+    <node id="公司">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="圖示">
+      <data key="d0">0.00483870967742</data>
+    </node>
+    <node id="網路">
+      <data key="d0">0.0148330206393</data>
+    </node>
+    <node id="手機">
+      <data key="d0">0.0110504071895</data>
+    </node>
+    <node id="蘋果">
+      <data key="d0">0.00789932596636</data>
+    </node>
+    <edge source="iPad" target="網路">
+      <data key="d1">0.29</data>
+    </edge>
+    <edge source="iPad" target="研究">
+      <data key="d1">0.22</data>
+    </edge>
+    <edge source="iPad" target="世界">
+      <data key="d1">0.3</data>
+    </edge>
+    <edge source="iPad" target="App">
+      <data key="d1">0.37</data>
+    </edge>
+    <edge source="iPad" target="程式">
+      <data key="d1">0.28</data>
+    </edge>
+    <edge source="iPad" target="設計">
+      <data key="d1">0.45</data>
+    </edge>
+    <edge source="iPad" target="市場">
+      <data key="d1">0.34</data>
+    </edge>
+    <edge source="iPad" target="科技">
+      <data key="d1">0.34</data>
+    </edge>
+    <edge source="iPad" target="機器">
+      <data key="d1">0.11</data>
+    </edge>
+    <edge source="iPad" target="雲端">
+      <data key="d1">0.1</data>
+    </edge>
+    <edge source="iPad" target="手機">
+      <data key="d1">0.26</data>
+    </edge>
+    <edge source="iPad" target="蘋果">
+      <data key="d1">0.25</data>
+    </edge>
+    <edge source="產業" target="網路">
+      <data key="d1">0.566667</data>
+    </edge>
+    <edge source="產業" target="研究">
+      <data key="d1">0.291667</data>
+    </edge>
+    <edge source="產業" target="世界">
+      <data key="d1">0.475</data>
+    </edge>
+    <edge source="產業" target="App">
+      <data key="d1">0.25</data>
+    </edge>
+    <edge source="產業" target="程式">
+      <data key="d1">0.208333</data>
+    </edge>
+    <edge source="產業" target="設計">
+      <data key="d1">0.408333</data>
+    </edge>
+    <edge source="產業" target="市場">
+      <data key="d1">0.516667</data>
+    </edge>
+    <edge source="產業" target="科技">
+      <data key="d1">0.475</data>
+    </edge>
+    <edge source="產業" target="機器">
+      <data key="d1">0.141667</data>
+    </edge>
+    <edge source="產業" target="雲端">
+      <data key="d1">0.125</data>
+    </edge>
+    <edge source="產業" target="手機">
+      <data key="d1">0.325</data>
+    </edge>
+    <edge source="產業" target="蘋果">
+      <data key="d1">0.158333</data>
+    </edge>
+    <edge source="熱情" target="網路">
+      <data key="d1">0.14</data>
+    </edge>
+    <edge source="熱情" target="研究">
+      <data key="d1">0.08</data>
+    </edge>
+    <edge source="熱情" target="世界">
+      <data key="d1">0.11</data>
+    </edge>
+    <edge source="熱情" target="App">
+      <data key="d1">0.01</data>
+    </edge>
+    <edge source="熱情" target="程式">
+      <data key="d1">0.04</data>
+    </edge>
+    <edge source="熱情" target="設計">
+      <data key="d1">0.13</data>
+    </edge>
+    <edge source="熱情" target="市場">
+      <data key="d1">0.07</data>
+    </edge>
+    <edge source="熱情" target="科技">
+      <data key="d1">0.1</data>
+    </edge>
+    <edge source="熱情" target="機器">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="熱情" target="雲端">
+      <data key="d1">0.02</data>
+    </edge>
+    <edge source="熱情" target="手機">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="熱情" target="蘋果">
+      <data key="d1">0.01</data>
+    </edge>
+    <edge source="價值" target="網路">
+      <data key="d1">0.59</data>
+    </edge>
+    <edge source="價值" target="研究">
+      <data key="d1">0.39</data>
+    </edge>
+    <edge source="價值" target="世界">
+      <data key="d1">0.44</data>
+    </edge>
+    <edge source="價值" target="App">
+      <data key="d1">0.16</data>
+    </edge>
+    <edge source="價值" target="程式">
+      <data key="d1">0.26</data>
+    </edge>
+    <edge source="價值" target="設計">
+      <data key="d1">0.39</data>
+    </edge>
+    <edge source="價值" target="市場">
+      <data key="d1">0.43</data>
+    </edge>
+    <edge source="價值" target="科技">
+      <data key="d1">0.4</data>
+    </edge>
+    <edge source="價值" target="機器">
+      <data key="d1">0.09</data>
+    </edge>
+    <edge source="價值" target="雲端">
+      <data key="d1">0.13</data>
+    </edge>
+    <edge source="價值" target="手機">
+      <data key="d1">0.31</data>
+    </edge>
+    <edge source="價值" target="蘋果">
+      <data key="d1">0.08</data>
+    </edge>
+    <edge source="產品" target="網路">
+      <data key="d1">0.48731</data>
+    </edge>
+    <edge source="產品" target="研究">
+      <data key="d1">0.269036</data>
+    </edge>
+    <edge source="產品" target="世界">
+      <data key="d1">0.390863</data>
+    </edge>
+    <edge source="產品" target="App">
+      <data key="d1">0.294416</data>
+    </edge>
+    <edge source="產品" target="程式">
+      <data key="d1">0.319797</data>
+    </edge>
+    <edge source="產品" target="設計">
+      <data key="d1">0.543147</data>
+    </edge>
+    <edge source="產品" target="市場">
+      <data key="d1">0.477157</data>
+    </edge>
+    <edge source="產品" target="科技">
+      <data key="d1">0.472081</data>
+    </edge>
+    <edge source="產品" target="機器">
+      <data key="d1">0.15736</data>
+    </edge>
+    <edge source="產品" target="雲端">
+      <data key="d1">0.137056</data>
+    </edge>
+    <edge source="產品" target="手機">
+      <data key="d1">0.375635</data>
+    </edge>
+    <edge source="產品" target="蘋果">
+      <data key="d1">0.177665</data>
+    </edge>
+    <edge source="朋友" target="網路">
+      <data key="d1">0.48</data>
+    </edge>
+    <edge source="朋友" target="研究">
+      <data key="d1">0.4</data>
+    </edge>
+    <edge source="朋友" target="世界">
+      <data key="d1">0.35</data>
+    </edge>
+    <edge source="朋友" target="App">
+      <data key="d1">0.19</data>
+    </edge>
+    <edge source="朋友" target="程式">
+      <data key="d1">0.23</data>
+    </edge>
+    <edge source="朋友" target="設計">
+      <data key="d1">0.37</data>
+    </edge>
+    <edge source="朋友" target="市場">
+      <data key="d1">0.24</data>
+    </edge>
+    <edge source="朋友" target="科技">
+      <data key="d1">0.37</data>
+    </edge>
+    <edge source="朋友" target="機器">
+      <data key="d1">0.14</data>
+    </edge>
+    <edge source="朋友" target="雲端">
+      <data key="d1">0.08</data>
+    </edge>
+    <edge source="朋友" target="手機">
+      <data key="d1">0.29</data>
+    </edge>
+    <edge source="朋友" target="蘋果">
+      <data key="d1">0.08</data>
+    </edge>
+    <edge source="能力" target="網路">
+      <data key="d1">0.43</data>
+    </edge>
+    <edge source="能力" target="研究">
+      <data key="d1">0.41</data>
+    </edge>
+    <edge source="能力" target="世界">
+      <data key="d1">0.44</data>
+    </edge>
+    <edge source="能力" target="App">
+      <data key="d1">0.11</data>
+    </edge>
+    <edge source="能力" target="程式">
+      <data key="d1">0.25</data>
+    </edge>
+    <edge source="能力" target="設計">
+      <data key="d1">0.36</data>
+    </edge>
+    <edge source="能力" target="市場">
+      <data key="d1">0.25</data>
+    </edge>
+    <edge source="能力" target="科技">
+      <data key="d1">0.47</data>
+    </edge>
+    <edge source="能力" target="機器">
+      <data key="d1">0.17</data>
+    </edge>
+    <edge source="能力" target="雲端">
+      <data key="d1">0.13</data>
+    </edge>
+    <edge source="能力" target="手機">
+      <data key="d1">0.23</data>
+    </edge>
+    <edge source="能力" target="蘋果">
+      <data key="d1">0.14</data>
+    </edge>
+    <edge source="工作" target="網路">
+      <data key="d1">0.5</data>
+    </edge>
+    <edge source="工作" target="研究">
+      <data key="d1">0.388889</data>
+    </edge>
+    <edge source="工作" target="世界">
+      <data key="d1">0.474747</data>
+    </edge>
+    <edge source="工作" target="App">
+      <data key="d1">0.181818</data>
+    </edge>
+    <edge source="工作" target="程式">
+      <data key="d1">0.277778</data>
+    </edge>
+    <edge source="工作" target="設計">
+      <data key="d1">0.459596</data>
+    </edge>
+    <edge source="工作" target="市場">
+      <data key="d1">0.292929</data>
+    </edge>
+    <edge source="工作" target="科技">
+      <data key="d1">0.393939</data>
+    </edge>
+    <edge source="工作" target="機器">
+      <data key="d1">0.217172</data>
+    </edge>
+    <edge source="工作" target="雲端">
+      <data key="d1">0.116162</data>
+    </edge>
+    <edge source="工作" target="手機">
+      <data key="d1">0.242424</data>
+    </edge>
+    <edge source="工作" target="蘋果">
+      <data key="d1">0.090909</data>
+    </edge>
+    <edge source="Mac" target="網路">
+      <data key="d1">0.14</data>
+    </edge>
+    <edge source="Mac" target="研究">
+      <data key="d1">0.1</data>
+    </edge>
+    <edge source="Mac" target="世界">
+      <data key="d1">0.14</data>
+    </edge>
+    <edge source="Mac" target="App">
+      <data key="d1">0.18</data>
+    </edge>
+    <edge source="Mac" target="程式">
+      <data key="d1">0.12</data>
+    </edge>
+    <edge source="Mac" target="設計">
+      <data key="d1">0.2</data>
+    </edge>
+    <edge source="Mac" target="市場">
+      <data key="d1">0.15</data>
+    </edge>
+    <edge source="Mac" target="科技">
+      <data key="d1">0.14</data>
+    </edge>
+    <edge source="Mac" target="機器">
+      <data key="d1">0.07</data>
+    </edge>
+    <edge source="Mac" target="雲端">
+      <data key="d1">0.06</data>
+    </edge>
+    <edge source="Mac" target="手機">
+      <data key="d1">0.14</data>
+    </edge>
+    <edge source="Mac" target="蘋果">
+      <data key="d1">0.11</data>
+    </edge>
+    <edge source="總裁" target="網路">
+      <data key="d1">0.07</data>
+    </edge>
+    <edge source="總裁" target="研究">
+      <data key="d1">0.11</data>
+    </edge>
+    <edge source="總裁" target="世界">
+      <data key="d1">0.08</data>
+    </edge>
+    <edge source="總裁" target="App">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="總裁" target="程式">
+      <data key="d1">0.05</data>
+    </edge>
+    <edge source="總裁" target="設計">
+      <data key="d1">0.1</data>
+    </edge>
+    <edge source="總裁" target="市場">
+      <data key="d1">0.13</data>
+    </edge>
+    <edge source="總裁" target="科技">
+      <data key="d1">0.08</data>
+    </edge>
+    <edge source="總裁" target="機器">
+      <data key="d1">0.04</data>
+    </edge>
+    <edge source="總裁" target="雲端">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="總裁" target="手機">
+      <data key="d1">0.07</data>
+    </edge>
+    <edge source="總裁" target="蘋果">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="全球" target="網路">
+      <data key="d1">0.477612</data>
+    </edge>
+    <edge source="全球" target="研究">
+      <data key="d1">0.368159</data>
+    </edge>
+    <edge source="全球" target="世界">
+      <data key="d1">0.537313</data>
+    </edge>
+    <edge source="全球" target="App">
+      <data key="d1">0.174129</data>
+    </edge>
+    <edge source="全球" target="程式">
+      <data key="d1">0.199005</data>
+    </edge>
+    <edge source="全球" target="設計">
+      <data key="d1">0.358209</data>
+    </edge>
+    <edge source="全球" target="市場">
+      <data key="d1">0.358209</data>
+    </edge>
+    <edge source="全球" target="科技">
+      <data key="d1">0.373134</data>
+    </edge>
+    <edge source="全球" target="機器">
+      <data key="d1">0.149254</data>
+    </edge>
+    <edge source="全球" target="雲端">
+      <data key="d1">0.149254</data>
+    </edge>
+    <edge source="全球" target="手機">
+      <data key="d1">0.273632</data>
+    </edge>
+    <edge source="全球" target="蘋果">
+      <data key="d1">0.119403</data>
+    </edge>
+    <edge source="500" target="網路">
+      <data key="d1">0.3</data>
+    </edge>
+    <edge source="500" target="研究">
+      <data key="d1">0.31</data>
+    </edge>
+    <edge source="500" target="世界">
+      <data key="d1">0.36</data>
+    </edge>
+    <edge source="500" target="App">
+      <data key="d1">0.17</data>
+    </edge>
+    <edge source="500" target="程式">
+      <data key="d1">0.2</data>
+    </edge>
+    <edge source="500" target="設計">
+      <data key="d1">0.39</data>
+    </edge>
+    <edge source="500" target="市場">
+      <data key="d1">0.27</data>
+    </edge>
+    <edge source="500" target="科技">
+      <data key="d1">0.27</data>
+    </edge>
+    <edge source="500" target="機器">
+      <data key="d1">0.12</data>
+    </edge>
+    <edge source="500" target="雲端">
+      <data key="d1">0.07</data>
+    </edge>
+    <edge source="500" target="手機">
+      <data key="d1">0.19</data>
+    </edge>
+    <edge source="500" target="蘋果">
+      <data key="d1">0.11</data>
+    </edge>
+    <edge source="健身" target="網路">
+      <data key="d1">0.05</data>
+    </edge>
+    <edge source="健身" target="研究">
+      <data key="d1">0.06</data>
+    </edge>
+    <edge source="健身" target="世界">
+      <data key="d1">0.02</data>
+    </edge>
+    <edge source="健身" target="App">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="健身" target="程式">
+      <data key="d1">0.04</data>
+    </edge>
+    <edge source="健身" target="設計">
+      <data key="d1">0.05</data>
+    </edge>
+    <edge source="健身" target="市場">
+      <data key="d1">0.04</data>
+    </edge>
+    <edge source="健身" target="科技">
+      <data key="d1">0.05</data>
+    </edge>
+    <edge source="健身" target="機器">
+      <data key="d1">0.01</data>
+    </edge>
+    <edge source="健身" target="雲端">
+      <data key="d1">0.02</data>
+    </edge>
+    <edge source="健身" target="手機">
+      <data key="d1">0.05</data>
+    </edge>
+    <edge source="健身" target="蘋果">
+      <data key="d1">0.01</data>
+    </edge>
+    <edge source="生態" target="網路">
+      <data key="d1">0.15</data>
+    </edge>
+    <edge source="生態" target="研究">
+      <data key="d1">0.17</data>
+    </edge>
+    <edge source="生態" target="世界">
+      <data key="d1">0.15</data>
+    </edge>
+    <edge source="生態" target="App">
+      <data key="d1">0.06</data>
+    </edge>
+    <edge source="生態" target="程式">
+      <data key="d1">0.05</data>
+    </edge>
+    <edge source="生態" target="設計">
+      <data key="d1">0.17</data>
+    </edge>
+    <edge source="生態" target="市場">
+      <data key="d1">0.09</data>
+    </edge>
+    <edge source="生態" target="科技">
+      <data key="d1">0.13</data>
+    </edge>
+    <edge source="生態" target="機器">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="生態" target="雲端">
+      <data key="d1">0.06</data>
+    </edge>
+    <edge source="生態" target="手機">
+      <data key="d1">0.1</data>
+    </edge>
+    <edge source="生態" target="蘋果">
+      <data key="d1">0.05</data>
+    </edge>
+    <edge source="個人" target="網路">
+      <data key="d1">0.590476</data>
+    </edge>
+    <edge source="個人" target="研究">
+      <data key="d1">0.409524</data>
+    </edge>
+    <edge source="個人" target="世界">
+      <data key="d1">0.438095</data>
+    </edge>
+    <edge source="個人" target="App">
+      <data key="d1">0.195238</data>
+    </edge>
+    <edge source="個人" target="程式">
+      <data key="d1">0.233333</data>
+    </edge>
+    <edge source="個人" target="設計">
+      <data key="d1">0.371429</data>
+    </edge>
+    <edge source="個人" target="市場">
+      <data key="d1">0.342857</data>
+    </edge>
+    <edge source="個人" target="科技">
+      <data key="d1">0.390476</data>
+    </edge>
+    <edge source="個人" target="機器">
+      <data key="d1">0.138095</data>
+    </edge>
+    <edge source="個人" target="雲端">
+      <data key="d1">0.138095</data>
+    </edge>
+    <edge source="個人" target="手機">
+      <data key="d1">0.3</data>
+    </edge>
+    <edge source="個人" target="蘋果">
+      <data key="d1">0.114286</data>
+    </edge>
+    <edge source="問題" target="網路">
+      <data key="d1">0.447368</data>
+    </edge>
+    <edge source="問題" target="研究">
+      <data key="d1">0.406015</data>
+    </edge>
+    <edge source="問題" target="世界">
+      <data key="d1">0.43609</data>
+    </edge>
+    <edge source="問題" target="App">
+      <data key="d1">0.142857</data>
+    </edge>
+    <edge source="問題" target="程式">
+      <data key="d1">0.266917</data>
+    </edge>
+    <edge source="問題" target="設計">
+      <data key="d1">0.417293</data>
+    </edge>
+    <edge source="問題" target="市場">
+      <data key="d1">0.270677</data>
+    </edge>
+    <edge source="問題" target="科技">
+      <data key="d1">0.390977</data>
+    </edge>
+    <edge source="問題" target="機器">
+      <data key="d1">0.12406</data>
+    </edge>
+    <edge source="問題" target="雲端">
+      <data key="d1">0.112782</data>
+    </edge>
+    <edge source="問題" target="手機">
+      <data key="d1">0.263158</data>
+    </edge>
+    <edge source="問題" target="蘋果">
+      <data key="d1">0.090226</data>
+    </edge>
+    <edge source="方式" target="網路">
+      <data key="d1">0.490566</data>
+    </edge>
+    <edge source="方式" target="研究">
+      <data key="d1">0.464151</data>
+    </edge>
+    <edge source="方式" target="世界">
+      <data key="d1">0.415094</data>
+    </edge>
+    <edge source="方式" target="App">
+      <data key="d1">0.150943</data>
+    </edge>
+    <edge source="方式" target="程式">
+      <data key="d1">0.249057</data>
+    </edge>
+    <edge source="方式" target="設計">
+      <data key="d1">0.4</data>
+    </edge>
+    <edge source="方式" target="市場">
+      <data key="d1">0.275472</data>
+    </edge>
+    <edge source="方式" target="科技">
+      <data key="d1">0.362264</data>
+    </edge>
+    <edge source="方式" target="機器">
+      <data key="d1">0.132075</data>
+    </edge>
+    <edge source="方式" target="雲端">
+      <data key="d1">0.09434</data>
+    </edge>
+    <edge source="方式" target="手機">
+      <data key="d1">0.241509</data>
+    </edge>
+    <edge source="方式" target="蘋果">
+      <data key="d1">0.098113</data>
+    </edge>
+    <edge source="公司" target="網路">
+      <data key="d1">0.498567</data>
+    </edge>
+    <edge source="公司" target="研究">
+      <data key="d1">0.329513</data>
+    </edge>
+    <edge source="公司" target="世界">
+      <data key="d1">0.369628</data>
+    </edge>
+    <edge source="公司" target="App">
+      <data key="d1">0.174785</data>
+    </edge>
+    <edge source="公司" target="程式">
+      <data key="d1">0.272206</data>
+    </edge>
+    <edge source="公司" target="設計">
+      <data key="d1">0.415473</data>
+    </edge>
+    <edge source="公司" target="市場">
+      <data key="d1">0.363897</data>
+    </edge>
+    <edge source="公司" target="科技">
+      <data key="d1">0.386819</data>
+    </edge>
+    <edge source="公司" target="機器">
+      <data key="d1">0.17192</data>
+    </edge>
+    <edge source="公司" target="雲端">
+      <data key="d1">0.131805</data>
+    </edge>
+    <edge source="公司" target="手機">
+      <data key="d1">0.260745</data>
+    </edge>
+    <edge source="公司" target="蘋果">
+      <data key="d1">0.151862</data>
+    </edge>
+    <edge source="圖示" target="網路">
+      <data key="d1">0.02</data>
+    </edge>
+    <edge source="圖示" target="研究">
+      <data key="d1">0.01</data>
+    </edge>
+    <edge source="圖示" target="世界">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="圖示" target="App">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="圖示" target="程式">
+      <data key="d1">0.02</data>
+    </edge>
+    <edge source="圖示" target="設計">
+      <data key="d1">0.03</data>
+    </edge>
+    <edge source="圖示" target="市場">
+      <data key="d1">0.01</data>
+    </edge>
+    <edge source="圖示" target="科技">
+      <data key="d1">0.02</data>
+    </edge>
+    <edge source="圖示" target="機器">
+      <data key="d1">0.02</data>
+    </edge>
+    <edge source="圖示" target="雲端">
+      <data key="d1">0.01</data>
+    </edge>
+    <edge source="圖示" target="手機">
+      <data key="d1">0.02</data>
+    </edge>
+    <edge source="圖示" target="蘋果">
+      <data key="d1">0.02</data>
+    </edge>
+  </graph>
+</graphml>

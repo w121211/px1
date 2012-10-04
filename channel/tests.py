@@ -12,9 +12,6 @@ from django.db import models
 from channel.models import *
 from channel.utils import *
 
-#    def __unicode__(self):
-#        return u"%s %s" % (self.id, self.user)
-
 class TaggerBasicTest(object):
     def setUp(self):
         # create users
@@ -181,4 +178,29 @@ class TaggerTest(object):
 [<Item: 2:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
 >>> g.search(Item.objects.filter(), ['like', 'alpha'], u2)
 [<Item: 3:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
+    """
+
+class TextMinerTest(object):
+    """
+# init data
+>>> u = User.objects.create(username='uuu1', password='uuu1')
+>>> n = NounTag.objects.create(name="test", sub_type='T', user=u)
+>>> n = NounTag.objects.create(name="English", sub_type='T', user=u)
+>>> n = NounTag.objects.create(name=u'\u7d10\u7d04\u5e02', sub_type='T', user=u)
+>>> n = NounTag.objects.create(name=u'\u707d\u96e3', sub_type='T', user=u)
+
+# ASC-II test
+>>> t = u'this is a simple test, and is for English only.'
+>>> m = TextMiner()
+>>> m.tags
+frozenset([u'test', u'\u7d10\u7d04\u5e02', u'\u707d\u96e3', u'English'])
+>>> m._tokenize(t)
+[u'this', u'is', u'a', u'simple', u'test', u'and', u'is', u'for', u'English', u'only', u'']
+>>> m.get_match_tags(t)
+{u'test': 1, u'English': 1}
+
+# Unicode test
+>>> t = u'\u4e94\u628a\u9470\u5319\u5728\u624b\uff0c\u6703\u8b93\u7d10\u7d04\u5e02\u9677\u5165\u707d\u96e3\uff0c'
+>>> m.get_match_tags(t)
+{u'\u7d10\u7d04\u5e02': 1, u'\u707d\u96e3': 1}
     """
