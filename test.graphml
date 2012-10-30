@@ -95,8 +95,8 @@
     <node id="蘋果">
       <data key="d0">0.00789932596636</data>
     </node>
-    <edge source="iPad" target="網路">
-      <data key="d1">0.29</data>
+    <edge source="iPad" target="雲端">
+      <data key="d1">0.1</data>
     </edge>
     <edge source="iPad" target="研究">
       <data key="d1">0.22</data>
@@ -122,8 +122,8 @@
     <edge source="iPad" target="機器">
       <data key="d1">0.11</data>
     </edge>
-    <edge source="iPad" target="雲端">
-      <data key="d1">0.1</data>
+    <edge source="iPad" target="網路">
+      <data key="d1">0.29</data>
     </edge>
     <edge source="iPad" target="手機">
       <data key="d1">0.26</data>
@@ -131,8 +131,8 @@
     <edge source="iPad" target="蘋果">
       <data key="d1">0.25</data>
     </edge>
-    <edge source="產業" target="網路">
-      <data key="d1">0.566667</data>
+    <edge source="產業" target="雲端">
+      <data key="d1">0.125</data>
     </edge>
     <edge source="產業" target="研究">
       <data key="d1">0.291667</data>
@@ -158,8 +158,8 @@
     <edge source="產業" target="機器">
       <data key="d1">0.141667</data>
     </edge>
-    <edge source="產業" target="雲端">
-      <data key="d1">0.125</data>
+    <edge source="產業" target="網路">
+      <data key="d1">0.566667</data>
     </edge>
     <edge source="產業" target="手機">
       <data key="d1">0.325</data>
@@ -167,8 +167,8 @@
     <edge source="產業" target="蘋果">
       <data key="d1">0.158333</data>
     </edge>
-    <edge source="熱情" target="網路">
-      <data key="d1">0.14</data>
+    <edge source="熱情" target="雲端">
+      <data key="d1">0.02</data>
     </edge>
     <edge source="熱情" target="研究">
       <data key="d1">0.08</data>
@@ -194,8 +194,8 @@
     <edge source="熱情" target="機器">
       <data key="d1">0.03</data>
     </edge>
-    <edge source="熱情" target="雲端">
-      <data key="d1">0.02</data>
+    <edge source="熱情" target="網路">
+      <data key="d1">0.14</data>
     </edge>
     <edge source="熱情" target="手機">
       <data key="d1">0.03</data>
@@ -203,8 +203,8 @@
     <edge source="熱情" target="蘋果">
       <data key="d1">0.01</data>
     </edge>
-    <edge source="價值" target="網路">
-      <data key="d1">0.59</data>
+    <edge source="價值" target="雲端">
+      <data key="d1">0.13</data>
     </edge>
     <edge source="價值" target="研究">
       <data key="d1">0.39</data>
@@ -230,8 +230,8 @@
     <edge source="價值" target="機器">
       <data key="d1">0.09</data>
     </edge>
-    <edge source="價值" target="雲端">
-      <data key="d1">0.13</data>
+    <edge source="價值" target="網路">
+      <data key="d1">0.59</data>
     </edge>
     <edge source="價值" target="手機">
       <data key="d1">0.31</data>
@@ -239,8 +239,8 @@
     <edge source="價值" target="蘋果">
       <data key="d1">0.08</data>
     </edge>
-    <edge source="產品" target="網路">
-      <data key="d1">0.48731</data>
+    <edge source="產品" target="雲端">
+      <data key="d1">0.137056</data>
     </edge>
     <edge source="產品" target="研究">
       <data key="d1">0.269036</data>
@@ -266,8 +266,8 @@
     <edge source="產品" target="機器">
       <data key="d1">0.15736</data>
     </edge>
-    <edge source="產品" target="雲端">
-      <data key="d1">0.137056</data>
+    <edge source="產品" target="網路">
+      <data key="d1">0.48731</data>
     </edge>
     <edge source="產品" target="手機">
       <data key="d1">0.375635</data>
@@ -275,8 +275,8 @@
     <edge source="產品" target="蘋果">
       <data key="d1">0.177665</data>
     </edge>
-    <edge source="朋友" target="網路">
-      <data key="d1">0.48</data>
+    <edge source="朋友" target="雲端">
+      <data key="d1">0.08</data>
     </edge>
     <edge source="朋友" target="研究">
       <data key="d1">0.4</data>
@@ -302,8 +302,8 @@
     <edge source="朋友" target="機器">
       <data key="d1">0.14</data>
     </edge>
-    <edge source="朋友" target="雲端">
-      <data key="d1">0.08</data>
+    <edge source="朋友" target="網路">
+      <data key="d1">0.48</data>
     </edge>
     <edge source="朋友" target="手機">
       <data key="d1">0.29</data>
@@ -311,8 +311,8 @@
     <edge source="朋友" target="蘋果">
       <data key="d1">0.08</data>
     </edge>
-    <edge source="能力" target="網路">
-      <data key="d1">0.43</data>
+    <edge source="能力" target="雲端">
+      <data key="d1">0.13</data>
     </edge>
     <edge source="能力" target="研究">
       <data key="d1">0.41</data>
@@ -338,8 +338,8 @@
     <edge source="能力" target="機器">
       <data key="d1">0.17</data>
     </edge>
-    <edge source="能力" target="雲端">
-      <data key="d1">0.13</data>
+    <edge source="能力" target="網路">
+      <data key="d1">0.43</data>
     </edge>
     <edge source="能力" target="手機">
       <data key="d1">0.23</data>
@@ -347,8 +347,8 @@
     <edge source="能力" target="蘋果">
       <data key="d1">0.14</data>
     </edge>
-    <edge source="工作" target="網路">
-      <data key="d1">0.5</data>
+    <edge source="工作" target="雲端">
+      <data key="d1">0.116162</data>
     </edge>
     <edge source="工作" target="研究">
       <data key="d1">0.388889</data>
@@ -374,8 +374,8 @@
     <edge source="工作" target="機器">
       <data key="d1">0.217172</data>
     </edge>
-    <edge source="工作" target="雲端">
-      <data key="d1">0.116162</data>
+    <edge source="工作" target="網路">
+      <data key="d1">0.5</data>
     </edge>
     <edge source="工作" target="手機">
       <data key="d1">0.242424</data>
@@ -383,8 +383,8 @@
     <edge source="工作" target="蘋果">
       <data key="d1">0.090909</data>
     </edge>
-    <edge source="Mac" target="網路">
-      <data key="d1">0.14</data>
+    <edge source="Mac" target="雲端">
+      <data key="d1">0.06</data>
     </edge>
     <edge source="Mac" target="研究">
       <data key="d1">0.1</data>
@@ -410,8 +410,8 @@
     <edge source="Mac" target="機器">
       <data key="d1">0.07</data>
     </edge>
-    <edge source="Mac" target="雲端">
-      <data key="d1">0.06</data>
+    <edge source="Mac" target="網路">
+      <data key="d1">0.14</data>
     </edge>
     <edge source="Mac" target="手機">
       <data key="d1">0.14</data>
@@ -419,8 +419,8 @@
     <edge source="Mac" target="蘋果">
       <data key="d1">0.11</data>
     </edge>
-    <edge source="總裁" target="網路">
-      <data key="d1">0.07</data>
+    <edge source="總裁" target="雲端">
+      <data key="d1">0.03</data>
     </edge>
     <edge source="總裁" target="研究">
       <data key="d1">0.11</data>
@@ -446,8 +446,8 @@
     <edge source="總裁" target="機器">
       <data key="d1">0.04</data>
     </edge>
-    <edge source="總裁" target="雲端">
-      <data key="d1">0.03</data>
+    <edge source="總裁" target="網路">
+      <data key="d1">0.07</data>
     </edge>
     <edge source="總裁" target="手機">
       <data key="d1">0.07</data>
@@ -455,8 +455,8 @@
     <edge source="總裁" target="蘋果">
       <data key="d1">0.03</data>
     </edge>
-    <edge source="全球" target="網路">
-      <data key="d1">0.477612</data>
+    <edge source="全球" target="雲端">
+      <data key="d1">0.149254</data>
     </edge>
     <edge source="全球" target="研究">
       <data key="d1">0.368159</data>
@@ -482,8 +482,8 @@
     <edge source="全球" target="機器">
       <data key="d1">0.149254</data>
     </edge>
-    <edge source="全球" target="雲端">
-      <data key="d1">0.149254</data>
+    <edge source="全球" target="網路">
+      <data key="d1">0.477612</data>
     </edge>
     <edge source="全球" target="手機">
       <data key="d1">0.273632</data>
@@ -491,8 +491,8 @@
     <edge source="全球" target="蘋果">
       <data key="d1">0.119403</data>
     </edge>
-    <edge source="500" target="網路">
-      <data key="d1">0.3</data>
+    <edge source="500" target="雲端">
+      <data key="d1">0.07</data>
     </edge>
     <edge source="500" target="研究">
       <data key="d1">0.31</data>
@@ -518,8 +518,8 @@
     <edge source="500" target="機器">
       <data key="d1">0.12</data>
     </edge>
-    <edge source="500" target="雲端">
-      <data key="d1">0.07</data>
+    <edge source="500" target="網路">
+      <data key="d1">0.3</data>
     </edge>
     <edge source="500" target="手機">
       <data key="d1">0.19</data>
@@ -527,8 +527,8 @@
     <edge source="500" target="蘋果">
       <data key="d1">0.11</data>
     </edge>
-    <edge source="健身" target="網路">
-      <data key="d1">0.05</data>
+    <edge source="健身" target="雲端">
+      <data key="d1">0.02</data>
     </edge>
     <edge source="健身" target="研究">
       <data key="d1">0.06</data>
@@ -554,8 +554,8 @@
     <edge source="健身" target="機器">
       <data key="d1">0.01</data>
     </edge>
-    <edge source="健身" target="雲端">
-      <data key="d1">0.02</data>
+    <edge source="健身" target="網路">
+      <data key="d1">0.05</data>
     </edge>
     <edge source="健身" target="手機">
       <data key="d1">0.05</data>
@@ -563,8 +563,8 @@
     <edge source="健身" target="蘋果">
       <data key="d1">0.01</data>
     </edge>
-    <edge source="生態" target="網路">
-      <data key="d1">0.15</data>
+    <edge source="生態" target="雲端">
+      <data key="d1">0.06</data>
     </edge>
     <edge source="生態" target="研究">
       <data key="d1">0.17</data>
@@ -590,8 +590,8 @@
     <edge source="生態" target="機器">
       <data key="d1">0.03</data>
     </edge>
-    <edge source="生態" target="雲端">
-      <data key="d1">0.06</data>
+    <edge source="生態" target="網路">
+      <data key="d1">0.15</data>
     </edge>
     <edge source="生態" target="手機">
       <data key="d1">0.1</data>
@@ -599,8 +599,8 @@
     <edge source="生態" target="蘋果">
       <data key="d1">0.05</data>
     </edge>
-    <edge source="個人" target="網路">
-      <data key="d1">0.590476</data>
+    <edge source="個人" target="雲端">
+      <data key="d1">0.138095</data>
     </edge>
     <edge source="個人" target="研究">
       <data key="d1">0.409524</data>
@@ -626,8 +626,8 @@
     <edge source="個人" target="機器">
       <data key="d1">0.138095</data>
     </edge>
-    <edge source="個人" target="雲端">
-      <data key="d1">0.138095</data>
+    <edge source="個人" target="網路">
+      <data key="d1">0.590476</data>
     </edge>
     <edge source="個人" target="手機">
       <data key="d1">0.3</data>
@@ -635,8 +635,8 @@
     <edge source="個人" target="蘋果">
       <data key="d1">0.114286</data>
     </edge>
-    <edge source="問題" target="網路">
-      <data key="d1">0.447368</data>
+    <edge source="問題" target="雲端">
+      <data key="d1">0.112782</data>
     </edge>
     <edge source="問題" target="研究">
       <data key="d1">0.406015</data>
@@ -662,8 +662,8 @@
     <edge source="問題" target="機器">
       <data key="d1">0.12406</data>
     </edge>
-    <edge source="問題" target="雲端">
-      <data key="d1">0.112782</data>
+    <edge source="問題" target="網路">
+      <data key="d1">0.447368</data>
     </edge>
     <edge source="問題" target="手機">
       <data key="d1">0.263158</data>
@@ -671,8 +671,8 @@
     <edge source="問題" target="蘋果">
       <data key="d1">0.090226</data>
     </edge>
-    <edge source="方式" target="網路">
-      <data key="d1">0.490566</data>
+    <edge source="方式" target="雲端">
+      <data key="d1">0.09434</data>
     </edge>
     <edge source="方式" target="研究">
       <data key="d1">0.464151</data>
@@ -698,8 +698,8 @@
     <edge source="方式" target="機器">
       <data key="d1">0.132075</data>
     </edge>
-    <edge source="方式" target="雲端">
-      <data key="d1">0.09434</data>
+    <edge source="方式" target="網路">
+      <data key="d1">0.490566</data>
     </edge>
     <edge source="方式" target="手機">
       <data key="d1">0.241509</data>
@@ -707,8 +707,8 @@
     <edge source="方式" target="蘋果">
       <data key="d1">0.098113</data>
     </edge>
-    <edge source="公司" target="網路">
-      <data key="d1">0.498567</data>
+    <edge source="公司" target="雲端">
+      <data key="d1">0.131805</data>
     </edge>
     <edge source="公司" target="研究">
       <data key="d1">0.329513</data>
@@ -734,8 +734,8 @@
     <edge source="公司" target="機器">
       <data key="d1">0.17192</data>
     </edge>
-    <edge source="公司" target="雲端">
-      <data key="d1">0.131805</data>
+    <edge source="公司" target="網路">
+      <data key="d1">0.498567</data>
     </edge>
     <edge source="公司" target="手機">
       <data key="d1">0.260745</data>
@@ -743,8 +743,8 @@
     <edge source="公司" target="蘋果">
       <data key="d1">0.151862</data>
     </edge>
-    <edge source="圖示" target="網路">
-      <data key="d1">0.02</data>
+    <edge source="圖示" target="雲端">
+      <data key="d1">0.01</data>
     </edge>
     <edge source="圖示" target="研究">
       <data key="d1">0.01</data>
@@ -770,8 +770,8 @@
     <edge source="圖示" target="機器">
       <data key="d1">0.02</data>
     </edge>
-    <edge source="圖示" target="雲端">
-      <data key="d1">0.01</data>
+    <edge source="圖示" target="網路">
+      <data key="d1">0.02</data>
     </edge>
     <edge source="圖示" target="手機">
       <data key="d1">0.02</data>

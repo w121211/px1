@@ -1,53 +1,49 @@
-/**
- * Init page
- */
+/* Init page */
 $( function() {
-    /* ajax calls */
-    initPageEvents();
-    registerAllEvents();
-
-    /* testing load posts */
-    // var data = JSON.parse(JSON.stringify(testData));
-    // loadPosts(data.posts);
+    noodle.ajax.loadPosts();
+    noodle.ajax.getChannels();
+    registEvents();
 });
 
-var initPageEvents = function() {
-    noodle.ajax.loadPosts();
-    noodle.ajax.loadChannels();
-};
-
 /* register elements with specific ajax actions */
-var registerAllEvents = function() {
+var registEvents = function() {
+    /* channel */
+    $(document).on("click", "a.channel-btn", noodle.channel.clickChannel);
+    $(document).on("click", "a.viewThread", noodle.channel.newChannel);
+    $(document).on("click", "a.viewThread", noodle.channel.tagChannel);
+    $(document).on("click", "a.channel-btn", noodle.channel.getChannels);
+
+    /* stream */
     $(document).on("click", "a.loadPosts", noodle.ajax.loadPosts);
     $(document).on("click", "a.newPost", noodle.ajax.newPost);
     $(document).on("click", "a.replyPost", noodle.ajax.replyPost);
     $(document).on("keypress", "textarea.pushText", noodle.ajax.pushPost);
     $(document).on("click", "a.tagPost", noodle.ajax.tagPost);
-
     $(document).on("click", "a.voteTag", noodle.ajax.voteTag);
 
-    $(document).on("click", "a.viewThread", noodle.ajax.loadThread);
-
-    $(document).on("", "", noodle.ajax.loadChannels);
-    $(document).on("click", "a.viewThread", noodle.ajax.newChannel);
-    $(document).on("click", "a.viewThread", noodle.ajax.tagChannel);
+    /* kaleido */
+    $(document).on("click", "a.viewThread", noodle.ajax.loadThread); // not implemented
 };
 
-function app() {
-    this.tmpl = new tmpl();
-    this.ajax = new ajax();
-    this.render = new render();
+function Noodle() {
+    this.tmpl = new Templates();
+    this.ajax = new Ajax();
+    this.render = new Render();
+    this.channel = new Channel();
 }
 
-function tmpl() {
-    this.streamPost = ' <div class="streamPost" data-id="{{ id }}" data-time="{{ time }}"> <div class="streamPostHeader"> {{ time }}@{{ user }}<br /> {{ id }}:{{ title }}<br /> </div> <br /> <div class="streamPostBody"> <p>{{ body }}</p> </div> <br /> <div class="streamPostFooter"> actions: <ul class="streamPostActions"> <li><a href="#" class="reply" data-postid="{{ id }}">reply</a></li> <li><a href="#" class="thread" data-postid="{{ id }}">thread</a></li> </ul> </div> <br/> <div class="streamPostExpand"> <div class="liveTags"> tags: <ul> {{#each tags}} <li> <div class="liveTag"> {{#if myvote}} <b>{{ name }}</b>-{{ votes }} {{else}} <a href="#" class="voteTag" data-id="{{ id }}">{{ name }}</a>-{{ votes }} {{/if}} </div> </li> {{/each}} <li><textarea class="tagText"></textarea><a href="#" class="addTag">add tag</a></li> </ul> </div> <br /> <div class="streamPostPush"> <ul> {{#each pushes}} <li> {{ body }} @{{ user }} </li> {{/each}} </ul> </div> <textarea class="streamPushTextbox"></textarea> <a href="#">push</a> </div> </div> <br /> <div>====================================================</div> <br />';
+function Templates() {
+    this.streamPost = '<div class="streamPost" data-id="{{ id }}" data-time="{{ time }}"> ' +
+        '<div class="streamPostHeader"> {{ time }}@{{ user }}<br /> {{ id }}:{{ title }}<br /> </div> <br /> ' +
+        '<div class="streamPostBody"> <p>{{ body }}</p> </div> <br /> ' +
+        '<div class="streamPostFooter"> actions: <ul class="streamPostActions"> <li><a href="#" class="reply" data-postid="{{ id }}">reply</a></li> <li><a href="#" class="thread" data-postid="{{ id }}">thread</a></li> </ul> </div> <br/> ' +
+        '<div class="streamPostExpand"> <div class="liveTags"> tags: <ul> {{#each tags}} <li> <div class="liveTag"> {{#if myvote}} <b>{{ name }}</b>-{{ votes }} {{else}} <a href="#" class="voteTag" data-id="{{ id }}">{{ name }}</a>-{{ votes }} {{/if}} </div> </li> {{/each}} <li><textarea class="tagText"></textarea><a href="#" class="addTag">add tag</a></li> </ul> </div> <br /> <div class="streamPostPush"> <ul> {{#each pushes}} <li> {{ body }} @{{ user }} </li> {{/each}} </ul> </div> <textarea class="streamPushTextbox"></textarea> <a href="#">push</a> </div> </div> <br /> <div>====================================================</div> <br />';
     this.push = '';
 }
 
-function ajax() {
+function Ajax() {
 
     /*** Methods related to post ***/
-
     this.loadPosts = function(event) {
         if (event != null)
             event.preventDefault();
@@ -55,13 +51,13 @@ function ajax() {
             url: '/api/post/get/', //'{% url stream.views.api_get_posts %}',
             type: 'GET',
             data: {
-                't': getURLParameter('t'),
+                't': getUrlParam('t'),
                 'd': getOldestPostTime()
             },
             dataType: 'json',
             success: function(data) {
                 console.log(data);
-                noodle.render.renderMsg(data.msg);
+                noodle.render.renderAlert(data.msg);
                 noodle.render.renderPosts(data.posts);
             }
         });
@@ -81,7 +77,7 @@ function ajax() {
             dataType: 'json',
             success: function(data) {
                 console.log(data);
-                noodle.render.renderMsg(data.msg);
+                noodle.render.renderAlert(data.msg);
             }
         });
     };
@@ -107,7 +103,7 @@ function ajax() {
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
-                    noodle.render.renderMsg(data.msg);
+                    noodle.render.renderAlert(data.msg);
                     noodle.render.renderPushes(data.pushes);
                 }
             });
@@ -129,7 +125,7 @@ function ajax() {
             dataType: 'json',
             success: function(data) {
                 console.log(data);
-                noodle.render.renderMsg(data.msg);
+                noodle.render.renderAlert(data.msg);
                 noodle.render.renderTags(data.tags);
             }
         });
@@ -147,9 +143,9 @@ function ajax() {
             dataType: 'json',
             success: function(data) {
                 if (data.votes == null) {
-                    noodle.render.renderMsg("fail to vote the tag");
+                    noodle.render.renderAlert("fail to vote the tag");
                 } else {
-                    noodle.render.renderMsg("votes = " + data.votes);
+                    noodle.render.renderAlert("votes = " + data.votes);
                 }
             }
         });
@@ -165,10 +161,38 @@ function ajax() {
         alert("load thread. postid:" + event.target.title);
     };
 
-    /*** Methods related to channel ***/
+}
 
-    this.loadChannels = function(event) {
+function Post() {
 
+}
+
+function Channel() {
+    this.clickChannel = function(event) {
+        if (event != null) event.preventDefault();
+
+        /* Set url as the channel's tag*/
+        var $target = $(event.target);
+        console.log($target.data('tags'));
+    };
+
+    this.getChannels = function(event) {
+        var $target = $(event.target);
+        $.ajax({
+            url: '/api/cha/get/',
+            type: 'GET',
+            data: {
+                'i': $target.data('id')
+            },
+            dataType: 'json',
+            success: function(data) {
+                if (data.alert == null) {
+                    // render channels
+                } else {
+                    // render alert
+                }
+            }
+        });
     };
 
     this.newChannel = function(event) {
@@ -176,13 +200,19 @@ function ajax() {
     };
 
     this.tagChannel = function(event) {
+        // Get tags from text area
+        // Ajax to add a tag, if successes, render the channel
+        //
+    };
+
+    this.renderChannels = function(channels) {
     };
 }
 
-function render() {
+function Render() {
 
-    this.renderMsg = function(msg) {
-        $("#msg").text("[msg] " + msg);
+    this.renderAlert = function(alert) {
+        $("#msg").text("[msg] " + alert);
     };
 
     this.renderPosts = function(posts) {
@@ -216,9 +246,19 @@ function render() {
         }
     };
 
-    this.renderChannels = function(channels) {
-
-    };
 }
+var noodle = new Noodle();
 
-var noodle = new app();
+var user = {
+    channels: {}
+};
+var c1 = {
+    id: 1,
+    tags: ["tag1", "tag2", "tag3"]
+};
+var c2 = {
+    id: 2,
+    tags: ["tag1", "tag2", "tag3"]
+};
+user.channels[c1.id] = c1.tags;
+user.channels[c2.id] = c2.tags;

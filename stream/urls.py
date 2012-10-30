@@ -15,11 +15,12 @@ urlpatterns += patterns('stream.ajax',
     url(r'^api/post/re/$', 'reply_post'),
     url(r'^api/post/pu/$', 'push_post'),
     url(r'^api/post/tag/$', 'tag_post'),
+    url(r'api/post/autotag/', 'autotag_post'),
     # actions of push
     url(r'^api/push/get/$', 'get_pushes'),
     # actions of tag
     url(r'^api/tag/vote/$', 'vote_live_tag'),
-    # actions of channel
+    # actions of tagcanal
     url(r'^api/cha/get/$', 'get_channels'),
     url(r'^api/cha/new/$', 'new_channel'),
     url(r'^api/cha/tag/$', 'tag_channel'),

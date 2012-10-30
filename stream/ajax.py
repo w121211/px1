@@ -9,14 +9,17 @@ from django.http import HttpResponse
 
 from account.decorators import login_required
 
-from channel.models import *
-from channel.utils import *
+from tagcanal.models import *
+from tagcanal.utils import *
+from taggraph.utils import TagGraph
+from taggraph.utils import TextMiner
 from stream.models import *
 from stream.decorators import ajax_view
 
 POSTS_PER_PAGE = 5
 
 _tagger = GeneralTagger()
+_miner = TextMiner(NounTag.objects.all())
 
 def _response(resp_data):
     resp = simplejson.dumps(resp_data, separators=(',', ':'))
@@ -34,13 +37,14 @@ def _paginate(queryset, item_num, time=None):
 @ajax_view
 def get_posts(request):
     resp = {
-        'msg': None,
+        'alert': None,
         'posts': [],
         }
     tags = request.GET.get('t', None)
     date = request.GET.get('d', None)
 
     qs = Post.objects.all()
+    print("qs")
     if len(tags) == 0: # return my_stream posts
         qs = _paginate(qs, POSTS_PER_PAGE, date)
     else: # return posts by given tags
@@ -49,50 +53,46 @@ def get_posts(request):
 
     for post in qs:
         resp['posts'].append(post.to_json(request.user))
-    if len(resp['posts']) > 0:
-        resp['msg'] = 'ok'
-    else:
-        resp['msg'] = 'no posts'
+    if len(resp['posts']) == 0:
+        resp['alert'] = 'error: can not find any posts'
     return _response(resp)
 
 # TODO fix ajax redirect (302) error. (1) add ajaxRedirectResponse (2) using view div to display html
-@login_required
+@ajax_view(method='POST')
 def new_post(request):
     """
-    an ajax action. Submit a new post.
-
+    Create a new post.
     {domain}/api/post/new/
     """
-    resp_data = {
-        'msg': None,
+    resp = {
+        'alert': None,
         }
-    if request.is_ajax() and request.method == 'POST':
-        try:
+
+    try:
         # saving a thread
-        #            f = ThreadForm(request.POST)
-        #            thread = f.save()
+        # f = ThreadForm(request.POST)
+        # thread = f.save()
 
-            # saving a post
-            print request.POST
-            f = PostForm(request.POST)
-            post = f.save(commit=False)
-            post.user = request.user
-            #            post.thread = thread
-            post.save()
+        # saving a post
+        print request.POST
+        f = PostForm(request.POST)
+        post = f.save(commit=False)
+        post.user = request.user
+        # post.thread = thread
+        post.save()
 
-            # add tags
-            _tagger.like.tag(post)
+        # add tags
+        _tagger.like.tag(post)
+    except:
+        print "Error:", sys.exc_info()[0]
 
-        except:
-            print "Error:", sys.exc_info()[0]
-    return HttpResponse()
+    return _response(resp)
 
-@login_required
+@ajax_view(method='POST')
 def reply_post(request):
     """
-    AJAX action. Reply a post.
-
-    {domain}/{stream}/json/post/reply/
+    Reply a post.
+    {domain}/api/post/reply/
     """
     if (request.is_ajax()):
         if (request.method == 'POST'):
@@ -106,25 +106,30 @@ def reply_post(request):
             p.save()
     return HttpResponse("OK")
 
-@login_required
+@ajax_view(method='POST')
 def push_post(request):
     """
-    AJAX action.
-
-    {domain}/{stream}/json/push/
+    Create a push.
+    {domain}/api/post/pu/
     """
-    if request.is_ajax():
-        if request.method == 'POST':
-            json = simplejson.loads(request.body)
-            p = Push()
-            p.user = request.user
-            p.post_id = json['post_id']
-            p.body = json['push_body']
-            p.save()
-        #            print json
-    return HttpResponse("OK")
+    resp = {
+        'alert': None,
+        }
+    f = PushForm(request.POST)
+    push = f.save(commit=False)
+    push.user = request.user
+    push.save()
 
-ajax_view
+#    json = simplejson.loads(request.body)
+#    p = Push()
+#    p.user = request.user
+#    p.post_id = json['post_id']
+#    p.body = json['push_body']
+#    p.save()
+
+    return _response(resp)
+
+@ajax_view
 def tag_post(request):
     """
     User tag a specified post.
@@ -143,9 +148,52 @@ def tag_post(request):
         resp['tag'] = t
     return _response(resp)
 
+@ajax_view(method='POST')
+def autotag_post(request):
+    """
+    Take a post content as input, find matching tags and return.
+    {domain}/api/post/autotag/
+    """
+    resp = {
+        'alert': None,
+        'tags': [],
+        }
+
+    # Validate post content
+    f = PostForm(request.POST)
+    if not f.is_valid():
+        resp['alert'] = "post title or body is not valid"
+        return _response(resp)
+    post = f.save(commit=False)
+
+    # get matching tags
+    g = TagGraph(_miner)
+    g.add_text(post.title)
+    g.add_text(post.body)
+    resp['tags'] = g.direct_tags
+
+    return _response(resp)
+
+def vote_livetag(request):
+    """
+    User can vote a live tag (a tag of an object) with a given live tag id.
+    {domain}/api/tag/vote/
+    """
+    resp = {
+        'votes': None
+    }
+    if request.is_ajax() and 'i' in request.GET:
+        t = LiveTag.objects.get(id=request.GET['i'])
+        t.vote(request.user)
+        resp['votes'] = t.get_votes()
+    return HttpResponse(simplejson.dumps(resp, separators=(',', ':')),
+        mimetype='application/json')
+
+def unvote_livetag(request):
+    return None
+
 def get_pushes(request):
     """
-    AJAX action.
     {domain}/json/push/get/
     """
     data = None
@@ -164,33 +212,3 @@ def get_pushes(request):
         return HttpResponse(data, mimetype='application/json')
     else:
         return HttpResponse('fail')
-
-def vote_live_tag(request):
-    """
-    An ajax action, user can vote a live tag (a tag of an object) with a given live tag id.
-
-    {domain}/api/tag/vote/
-    """
-    resp = {
-        'votes': None
-    }
-    if request.is_ajax() and 'i' in request.GET:
-        t = LiveTag.objects.get(id=request.GET['i'])
-        t.vote(request.user)
-        resp['votes'] = t.get_votes()
-    return HttpResponse(simplejson.dumps(resp, separators=(',', ':')),
-        mimetype='application/json')
-
-def get_channels(request):
-    pass
-
-def new_channel(request):
-    pass
-
-def tag_channel(request):
-    "add a tag from a channel"
-    pass
-
-def untag_channel(request):
-    "remove a tag from a channel"
-    pass

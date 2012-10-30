@@ -9,8 +9,8 @@ from django.http import HttpResponse
 
 from account.decorators import login_required
 
-from channel.models import *
-from channel.utils import *
+from tagcanal.models import *
+from tagcanal.utils import *
 from stream.models import *
 
 _tagger = GeneralTagger()
@@ -32,15 +32,15 @@ def test(request):
 
     {domain}/{stream}/
     """
-    return render_to_response('stream/post_test.html', context_instance=RequestContext(request))
+    return render_to_response('stream/test.html', context_instance=RequestContext(request))
 
 @login_required()
 def stream(request):
     """
-    Show a stream page by a given channel or tags. If no specifies, use the default channel (mystream).
+    Show a stream page by a given tagcanal or tags. If no specifies, use the default tagcanal (mystream).
     GET:{
     't':'t1 t2 t3', # tags
-    'c':''       , # channel id
+    'c':''       , # tagcanal id
     }
 
     {domain}/{stream}/?t=
@@ -49,7 +49,7 @@ def stream(request):
         pass
     else:
         pass
-    return render_to_response('stream/post_test.html', context_instance=RequestContext(request))
+    return render_to_response('stream/test.html', context_instance=RequestContext(request))
 
 @login_required
 def view_post(request, post_id):
@@ -140,7 +140,7 @@ def _api_get_posts(request):
     if request.is_ajax() and request.method == 'GET':
         try:
             if 't' in request.GET:
-                # return channel posts
+                # return tagcanal posts
 #                tags = str(request.GET['t']).split('+')
                 t = request.GET
                 tag_names = str(t).split('+')

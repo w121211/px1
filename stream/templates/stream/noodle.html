@@ -1,10 +1,70 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <html>
 <head>
-    <title></title>
-</head>
-<body>
+    <!-- source files for development -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/history.js/1.7.1/native.history.js"></script>
+    <script src="file:///Users/chi/git/px1/stream/static/stream/js/main.js"></script>
+    <script src="file:///Users/chi/git/px1/stream/static/stream/js/utils.js"></script>
+    <script src="file:///Users/chi/git/px1/stream/static/stream/js/channel.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/stream/noodle.css">
 
+    <!-- Templates -->
+    <script id="channel-template" type="text/x-handlebars-template">
+        <div class="channel">
+            <a class=" -btn" href="#" data-tags="t1 t2 t3">{{ Username }}</a>
+            <textarea class="channel-new-tag-txt">new tag</textarea>
+            <a class="channel-new-tag-btn" href="#" data-cid="1">add a tag</a>
+        </div>
+    </script>
+</head>
+
+<body>
+<div class="hcontainer">
+    <div class="hwarpper">
+        <div class="contents">
+            contents
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="wrapper">
+        <!-- Channel Module -->
+        <div class="channel-box">
+            <div class="channel">
+                <a class="channel-btn" href="#" data-tags="t1 t2 t3">channel 1: 中文, tagB, ...</a>
+                <textarea class="channel-new-tag-txt">new tag</textarea>
+                <a class="channel-new-tag-btn" href="#" data-cid="1">add a tag</a>
+            </div>
+            <div class="new-channel">
+                <textarea class="channel-new-tag-txt"></textarea>
+                <a class="new-channel-btn" href="#">add a channel</a>
+            </div>
+        </div>
+
+        <div class="stream">
+            <div id="postBox">
+                postBox
+            </div>
+            <div class="post">
+                post
+            </div>
+        </div>
+        <div class="kaleido">
+            <div id="thread">
+                thread
+            </div>
+            <div class="cm">
+                cm
+                <div class="cmBox">
+                    cmBox
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

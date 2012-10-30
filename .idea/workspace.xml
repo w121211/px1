@@ -2,13 +2,97 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e60e569b-a739-483d-9342-6890668ee456" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/channel/nlp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/nlp/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/channel/ajax.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/js/alert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/js/channel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/js/dom.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/js/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/js/post.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/js/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/static/stream/noodle.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stream/templates/stream/noodle.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tagcanal/fixtures/initial_da.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggraph/models.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/actions.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/admin.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/conf/locale/en/LC_MESSAGES/django.po" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/decorators.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/exceptions.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/feeds.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/gfk.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/managers.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/migrations/0002_auto__chg_field_action_timestamp.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/migrations/0003_text_field_ids.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/migrations/0004_char_field_ids.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/migrations/0005_auto__add_field_follow_actor_only.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/migrations/0006_auto__add_field_action_data.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/settings.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/signals.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/templates/activity/action.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/templates/activity/actor.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/templates/activity/detail.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/templates/activity/followers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/templatetags/activity_tags.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/tests.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/urls.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/actstream/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/channel/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/channel/fixtures/initial_da.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forum/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forum/admin.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forum/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forum/tests.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forum/urls.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forum/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/nlp/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/nlp/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stream/static/stream/test.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stream/static/stream/twitter.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stream/templates/stream/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stream/templates/stream/post.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/stream/templates/stream/thread.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/Test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/admin.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/forms.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/de/LC_MESSAGES/django.mo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/de/LC_MESSAGES/django.po" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/en/LC_MESSAGES/django.po" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/he/LC_MESSAGES/django.mo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/he/LC_MESSAGES/django.po" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/nl/LC_MESSAGES/django.mo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/nl/LC_MESSAGES/django.po" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/ru/LC_MESSAGES/django.mo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/locale/ru/LC_MESSAGES/django.po" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/managers.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/tests.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/utils.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taggit/views.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/actstream/migrations/__init__.py" afterPath="$PROJECT_DIR$/tagcanal/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/actstream/templatetags/__init__.py" afterPath="$PROJECT_DIR$/taggraph/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/channel/models.py" afterPath="$PROJECT_DIR$/tagcanal/models.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/channel/nlp.py" afterPath="$PROJECT_DIR$/tagcanal/nlp.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/channel/tests.py" afterPath="$PROJECT_DIR$/tagcanal/tests.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/channel/utils.py" afterPath="$PROJECT_DIR$/tagcanal/utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/channel/views.py" afterPath="$PROJECT_DIR$/tagcanal/views.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/nlp/tests.py" afterPath="$PROJECT_DIR$/taggraph/tests.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/nlp/utils.py" afterPath="$PROJECT_DIR$/taggraph/utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/nlp/views.py" afterPath="$PROJECT_DIR$/taggraph/views.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/stream/static/stream/core.js" afterPath="$PROJECT_DIR$/stream/static/stream/noodle.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/stream/templates/stream/post_test.html" afterPath="$PROJECT_DIR$/stream/templates/stream/test.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channel/tests.py" afterPath="$PROJECT_DIR$/channel/tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/channel/utils.py" afterPath="$PROJECT_DIR$/channel/utils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/px1/settings.py" afterPath="$PROJECT_DIR$/px1/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/static/stream/twitter.html" afterPath="$PROJECT_DIR$/stream/static/stream/twitter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/ajax.py" afterPath="$PROJECT_DIR$/stream/ajax.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/models.py" afterPath="$PROJECT_DIR$/stream/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/static/stream/templates.html" afterPath="$PROJECT_DIR$/stream/static/stream/templates.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/tests.py" afterPath="$PROJECT_DIR$/stream/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/urls.py" afterPath="$PROJECT_DIR$/stream/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/views.py" afterPath="$PROJECT_DIR$/stream/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.graphml" afterPath="$PROJECT_DIR$/test.graphml" />
     </list>
     <ignored path="px1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,52 +120,79 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="utils.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/nlp/utils.py">
+      <file leaf-file-name="ajax.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stream/ajax.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="44" selection-start="1704" selection-end="1704" vertical-scroll-proportion="0.46451613">
+            <state line="189" column="23" selection-start="4785" selection-end="4785" vertical-scroll-proportion="0.43143812">
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nlp/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="14" selection-start="3154" selection-end="3154" vertical-scroll-proportion="-9.192307">
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stream/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="70" selection-start="440" selection-end="506" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#184#216#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/contrib/auth/models.py">
+        <entry file="file://$PROJECT_DIR$/stream/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="158" column="35" selection-start="5641" selection-end="5641" vertical-scroll-proportion="0.0">
+            <state line="109" column="6" selection-start="2753" selection-end="2753" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taggraph/tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="13" selection-start="3723" selection-end="3723" vertical-scroll-proportion="-18.26923">
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/templates/stream/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="35" selection-start="1597" selection-end="1597" vertical-scroll-proportion="-27.52">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manager.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/db/models/manager.py">
+      <file leaf-file-name="templates.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/static/stream/templates.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="13" selection-start="2199" selection-end="2199" vertical-scroll-proportion="0.0">
+            <state line="127" column="21" selection-start="3983" selection-end="3983" vertical-scroll-proportion="-7.4">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dom.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/static/stream/js/dom.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="21" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/static/stream/js/post.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="240" column="33" selection-start="6964" selection-end="6964" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stream/static/stream/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="58" selection-start="132" selection-end="174" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,29 +211,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/stream/urls.py" />
-        <option value="$PROJECT_DIR$/stream/templates/stream/post_test.html" />
-        <option value="$PROJECT_DIR$/stream/static/stream/core.js" />
-        <option value="$PROJECT_DIR$/stream/static/stream/templates.html" />
-        <option value="$PROJECT_DIR$/channel/models.py" />
+        <option value="$PROJECT_DIR$/stream/static/stream/js/utils.js" />
+        <option value="$PROJECT_DIR$/stream/static/stream/js/alert.js" />
+        <option value="$PROJECT_DIR$/stream/static/stream/noodle.css" />
+        <option value="$PROJECT_DIR$/stream/static/stream/js/channel.js" />
+        <option value="$PROJECT_DIR$/stream/templates/stream/noodle.html" />
         <option value="$PROJECT_DIR$/stream/models.py" />
-        <option value="$PROJECT_DIR$/stream/ajax.py" />
-        <option value="$PROJECT_DIR$/stream/tests.py" />
-        <option value="$PROJECT_DIR$/stream/static/stream/twitter.html" />
-        <option value="$PROJECT_DIR$/channel/utils.py" />
-        <option value="$PROJECT_DIR$/channel/nlp.py" />
-        <option value="$PROJECT_DIR$/channel/tests.py" />
-        <option value="$PROJECT_DIR$/nlp/models.py" />
         <option value="$PROJECT_DIR$/px1/settings.py" />
-        <option value="$PROJECT_DIR$/nlp/tests.py" />
-        <option value="$PROJECT_DIR$/nlp/utils.py" />
+        <option value="$PROJECT_DIR$/stream/static/stream/noodle.js" />
+        <option value="$PROJECT_DIR$/stream/templates/stream/test.html" />
+        <option value="$PROJECT_DIR$/stream/static/stream/js/dom.js" />
+        <option value="$PROJECT_DIR$/stream/static/stream/js/main.js" />
+        <option value="$PROJECT_DIR$/stream/static/stream/js/post.js" />
+        <option value="$PROJECT_DIR$/channel/ajax.py" />
+        <option value="$PROJECT_DIR$/stream/urls.py" />
+        <option value="$PROJECT_DIR$/taggraph/tests.py" />
+        <option value="$PROJECT_DIR$/stream/ajax.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="774" />
+    <option name="height" value="746" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -150,16 +261,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -188,6 +289,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="taggraph" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="px1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="px1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="stream" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -202,7 +317,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nlp" />
+              <option name="myItemId" value="px1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -222,23 +337,49 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="99" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="101" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Python" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="99" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/Startup/django_apps/django-endless-pagination-1.1" />
-    <property name="DefaultHtmlFileTemplate" value="Html" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="105" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="899" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="899" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="105" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="101" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="azure" serverId="97be64ba-b2fb-431b-b610-87f193d24e7c" />
@@ -265,11 +406,11 @@
       <recent name="$PROJECT_DIR$/stream/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/stream/static/stream" />
+      <recent name="$PROJECT_DIR$/stream/static/stream/js" />
       <recent name="$PROJECT_DIR$/stream/templates/stream" />
+      <recent name="$PROJECT_DIR$/stream/static/stream" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/px1/templates/forum" />
-      <recent name="$PROJECT_DIR$/px1/apps" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.px1">
@@ -310,26 +451,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
-      <option name="MULTIPROCESS" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <module name="px1" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
@@ -351,6 +472,25 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="px1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -460,23 +600,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="774" extended-state="0" />
+    <frame x="0" y="22" width="1280" height="746" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6707504" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23905997" sideWeight="0.2128637" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22204214" sideWeight="0.2832" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2439222" sideWeight="0.6707504" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23905997" sideWeight="0.29249617" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22204214" sideWeight="0.7056" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.49756888" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48392037" sideWeight="0.49675852" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35528332" sideWeight="0.49675852" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -546,110 +686,126 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/networkx/__init__.py">
+    <entry file="file://$PROJECT_DIR$/stream/static/stream/noodle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="18" selection-start="1367" selection-end="1367" vertical-scroll-proportion="-0.51724136" />
+        <state line="39" column="9" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.78303427">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/core/exceptions.py">
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm20/python_stubs/-823893615/sys.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="6" selection-start="229" selection-end="229" vertical-scroll-proportion="0.3229358" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/db/models/signals.py">
+    <entry file="file://$PROJECT_DIR$/channel/ajax.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/db/models/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="273" column="6" selection-start="12334" selection-end="12334" vertical-scroll-proportion="0.33270678">
+        <state line="14" column="39" selection-start="438" selection-end="438" vertical-scroll-proportion="0.35782748">
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/db/models/__init__.py">
+    <entry file="file://$PROJECT_DIR$/stream/decorators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="38" selection-start="400" selection-end="400" vertical-scroll-proportion="0.21052632" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stream/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stream/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="41" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/db/models/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="13" selection-start="2199" selection-end="2199" vertical-scroll-proportion="0.0">
+        <state line="14" column="4" selection-start="513" selection-end="513" vertical-scroll-proportion="0.17891374">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/contrib/auth/models.py">
+    <entry file="file://$PROJECT_DIR$/stream/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="158" column="35" selection-start="5641" selection-end="5641" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/px1/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="10" selection-start="4746" selection-end="4746" vertical-scroll-proportion="0.8685714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nlp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="4" selection-start="186" selection-end="186" vertical-scroll-proportion="0.32">
+        <state line="16" column="34" selection-start="538" selection-end="538" vertical-scroll-proportion="0.40894568">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../ev1/lib/python2.7/site-packages/django/test/_doctest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1234" column="0" selection-start="48846" selection-end="48846" vertical-scroll-proportion="0.33225808">
+        <state line="2135" column="0" selection-start="82157" selection-end="82157" vertical-scroll-proportion="0.33248731">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/channel/models.py">
+    <entry file="file://$PROJECT_DIR$/stream/static/stream/js/dom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="6" selection-start="681" selection-end="681" vertical-scroll-proportion="1.1870967">
+        <state line="3" column="21" selection-start="73" selection-end="73" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stream/tests.py">
+    <entry file="file://$PROJECT_DIR$/stream/static/stream/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="70" selection-start="440" selection-end="506" vertical-scroll-proportion="0.0">
+        <state line="6" column="58" selection-start="132" selection-end="174" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/static/stream/js/post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="240" column="33" selection-start="6964" selection-end="6964" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="6" selection-start="2753" selection-end="2753" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#184#216#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nlp/tests.py">
+    <entry file="file://$PROJECT_DIR$/taggraph/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="14" selection-start="3154" selection-end="3154" vertical-scroll-proportion="-9.192307">
+        <state line="61" column="13" selection-start="3723" selection-end="3723" vertical-scroll-proportion="-18.26923">
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nlp/utils.py">
+    <entry file="file://$PROJECT_DIR$/stream/templates/stream/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="44" selection-start="1704" selection-end="1704" vertical-scroll-proportion="0.46451613">
+        <state line="43" column="35" selection-start="1597" selection-end="1597" vertical-scroll-proportion="-27.52">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/static/stream/templates.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="21" selection-start="3983" selection-end="3983" vertical-scroll-proportion="-7.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggraph/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="22" selection-start="2386" selection-end="2386" vertical-scroll-proportion="0.25559106">
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/px1/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stream/ajax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="23" selection-start="4785" selection-end="4785" vertical-scroll-proportion="0.43143812">
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

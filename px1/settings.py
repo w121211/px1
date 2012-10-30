@@ -137,7 +137,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
+
     # theme
     "pinax_theme_bootstrap_account",
     "pinax_theme_bootstrap",
@@ -153,8 +153,8 @@ INSTALLED_APPS = [
 #    'forum',
 #    'actstream',
     'stream',
-    'channel',
-    'nlp',
+    'tagcanal',
+    'taggraph',
 ]
 
 # A sample logging configuration. The only tangible logging

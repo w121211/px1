@@ -7,7 +7,7 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 
-from channel.models import *
+from tagcanal.models import *
 from stream.models import *
 
 class ModelTest(object):
@@ -24,7 +24,7 @@ class ModelTest(object):
     >>> pu1 = Push.objects.create(user=u, body='bb', post=po1)
 
     # test tagging
-    >>> from channel.utils import GeneralTagger
+    >>> from tagcanal.utils import GeneralTagger
     >>> g = GeneralTagger()
     >>> l = g.like.tag(po1)
     >>> l = g.noun.tag(po1, 'test', u)
@@ -33,4 +33,7 @@ class ModelTest(object):
     {'body': 'bb', 'user': 'uuu1', 'tags': [{'myvote': False, 'votes': 0, 'type': u'FN', 'id': 3, 'name': u'like'}]}
     >>> po1.to_json(u)
     {'body': 'bbb', 'title': 'ttt', 'tags': [{'myvote': False, 'votes': 0, 'type': u'FN', 'id': 1, 'name': u'like'}, {'myvote': True, 'votes': 1, 'type': u'NN', 'id': 2, 'name': u'test'}], 'reid': None, 'user': 'uuu1', 'time': '2012-09-29T16:49:13', 'id': 1}
+
+    # test channel
+
     """

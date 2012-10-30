@@ -3,7 +3,8 @@ from django.contrib.contenttypes import generic
 from django.db import models
 from django.forms import ModelForm
 
-from channel.models import LiveTag
+from tagcanal.models import NounTag
+from tagcanal.models import LiveTag
 
 class TaggableItem(models.Model):
     tags = generic.GenericRelation(LiveTag, related_name="%(app_label)s_%(class)s_tags")
@@ -20,8 +21,7 @@ class TaggableItem(models.Model):
 
 
 class Thread(models.Model):
-    created_time = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=40)
+    time = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
         return u"%d-%s" % (self.id, self.title)
@@ -35,35 +35,36 @@ class Post(TaggableItem):
     time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     repost = models.ForeignKey('self', null=True, blank=True)
-#    thread = models.ForeignKey(Thread)
+    thread = models.ForeignKey(Thread)
     title = models.CharField(max_length=40)
-    body = models.TextField(max_length=10000)
+    body = models.TextField()
 
     def __unicode__(self):
         return u"%s" % (self.id)
 
-    def get_posts(self):
+    def get_pushes(self, user):
         l = list()
         for p in self.push_set.all():
-            l.append(p.to_json())
+            l.append(p.to_json(user))
         return l
 
     def to_json(self, user):
         post = {
             'id': self.id,
-#            'thread_id': self.thread_id,
+            'tid': self.thread_id,
+            'reid': self.repost_id,
             'user': self.user.username,
             'time': self.time.strftime('%Y-%m-%dT%H:%M:%S'),
-            'reid': self.repost_id,
             'title': self.title,
             'body': self.body,
             'tags': self.get_tags(user),
+            'pushes': self.get_pushes(user)
         }
         return post
 
     @models.permalink
     def get_absolute_url(self):
-        return ('stream.views.view_post', [str(self.id)])
+        return 'stream.views.view_post', [str(self.id)]
 
 
 class Push(TaggableItem):
@@ -82,6 +83,16 @@ class Push(TaggableItem):
             'tags': self.get_tags(user),
         }
         return p
+
+class Channel(models.Model):
+    user = models.ForeignKey(User)
+    tags = models.ManyToManyField(NounTag)
+
+    def to_json(self):
+        j = {
+            'tags': self.tags
+        }
+        return j
 
 
 class ThreadForm(ModelForm):

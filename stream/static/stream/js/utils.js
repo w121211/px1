@@ -23,24 +23,16 @@ function getUrlParam(name) {
     );
 }
 
-function setURLParam(name, value) {
-    name = encodeURI(name);
-    value = encodeURI(value);
-
-    var kvp = document.location.search.substr(1).split('&');
-    if (kvp == '') {
-        document.location.search = '?' + name + '=' + value;
-    } else {
-        var i = kvp.length; var x; while (i--) {
-            x = kvp[i].split('=');
-            if (x[0] == name) {
-                x[1] = value;
-                kvp[i] = x.join('=');
-                break;
-            }
-        }
-        if (i < 0) { kvp[kvp.length] = [name, value].join('='); }
+function setUrlParam(name,value){
+    var search;
+    if (getUrlParam(name)){
+        search =location.search.replace(new RegExp('([?|&]'+name + '=)' + '(.+?)(&|$)'),"$1"+encodeURIComponent(value)+"$3");
+    }else if(location.search.length){
+        search = location.search +'&'+name + '=' +encodeURIComponent(value);
+    }else{
+        search = '?'+name + '=' +encodeURIComponent(value);
     }
-    //this will reload the page, it's likely better to store this until finished
-    // document.location.search = kvp.join('&');
+    //console.log("search:" + decodeURIComponent(search));
+    document.location.href += search;
+    //History.pushState({state:History.getStateId()+1},document.title,search);
 }

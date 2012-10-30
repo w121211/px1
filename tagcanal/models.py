@@ -9,6 +9,7 @@ class Tag(models.Model):
         ('VB', 'Verb'),
         ('JJ', 'Adjective'),
         ('FN', 'Function'),
+        ('FB', 'Forbidden'),
         )
     time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
@@ -19,12 +20,24 @@ class Tag(models.Model):
         return u"%s|%s" % (self.type, self.name)
 
 
-class TermTag(Tag):
+class ForbiddenTag(Tag):
+    def __init__(self, *args, **kwargs):
+        super(FunctionTag, self).__init__(*args, **kwargs)
+        self.type = 'FB'
+
+
+class FunctionTag(Tag):
+    def __init__(self, *args, **kwargs):
+        super(FunctionTag, self).__init__(*args, **kwargs)
+        self.type = 'FN'
+
+
+class WordTag(Tag):
     class Meta:
         abstract = True
 
 
-class NounTag(TermTag):
+class NounTag(WordTag):
     SUB_TYPES = (
         ('H', 'Hub'),
         ('T', 'Terminal'),
@@ -38,17 +51,13 @@ class NounTag(TermTag):
     def __unicode__(self):
         return u"%s%s|%s" % (self.type, self.sub_type, self.name)
 
-class VerbTag(TermTag):
+
+class VerbTag(WordTag):
     def __init__(self, *args, **kwargs):
         super(VerbTag, self).__init__(*args, **kwargs)
         self.type = 'VB'
 
-
-class FunctionTag(Tag):
-    def __init__(self, *args, **kwargs):
-        super(FunctionTag, self).__init__(*args, **kwargs)
-        self.type = 'FN'
-
+### Tagger ###
 
 class LiveTag(models.Model):
     tag = models.ForeignKey(Tag)
@@ -86,6 +95,7 @@ class LiveTag(models.Model):
 
     class Meta:
         unique_together = ('content_type', 'object_id', 'tag')
+
 
 class Item(models.Model):
     user = models.ForeignKey(User)
