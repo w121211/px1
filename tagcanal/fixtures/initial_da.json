@@ -1,0 +1,16 @@
+[
+    {"pk": 1, "model": "tagcanal.tag", "fields": {"type": "FN", "name": "like"}},
+    {"pk": 2, "model": "tagcanal.tag", "fields": {"type": "FN", "name": "pin"}},
+    {"pk": 3, "model": "tagcanal.tag", "fields": {"type": "NN", "name": "test"}},
+    {"pk": 4, "model": "tagcanal.tag", "fields": {"type": "NN", "name": "alpha"}},
+    {"pk": 5, "model": "tagcanal.tag", "fields": {"type": "VB", "name": "chat"}},
+    {"pk": 6, "model": "tagcanal.tag", "fields": {"type": "VB", "name": "ask"}},
+    {"pk": 7, "model": "tagcanal.tag", "fields": {"type": "VB", "name": "idea"}},
+    {"pk": 3, "model": "tagcanal.nountag", "fields": {"sub_type": "T"}},
+    {"pk": 4, "model": "tagcanal.nountag", "fields": {"sub_type": "T"}},
+    {"pk": 5, "model": "tagcanal.verbtag", "fields": {}},
+    {"pk": 6, "model": "tagcanal.verbtag", "fields": {}},
+    {"pk": 7, "model": "tagcanal.verbtag", "fields": {}},
+    {"pk": 1, "model": "tagcanal.functiontag", "fields": {}},
+    {"pk": 2, "model": "tagcanal.functiontag", "fields": {}}
+]
