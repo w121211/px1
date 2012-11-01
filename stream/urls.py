@@ -19,10 +19,6 @@ urlpatterns += patterns('stream.ajax',
     # actions of push
     url(r'^api/push/get/$', 'get_pushes'),
     # actions of tag
-    url(r'^api/tag/vote/$', 'vote_live_tag'),
-    # actions of tagcanal
-    url(r'^api/cha/get/$', 'get_channels'),
-    url(r'^api/cha/new/$', 'new_channel'),
-    url(r'^api/cha/tag/$', 'tag_channel'),
+    url(r'^api/tag/vote/$', 'vote_livetag')
     # actions of thread
 )

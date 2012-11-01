@@ -40,6 +40,8 @@ class BaseTagGraph(object):
         num = g.number_of_nodes()
 
         # Assign initial pageranks
+        if num == 0:
+            return
         pr = 1.0 / num
         for n in g.nodes_iter():
             g.node[n]['pr'] = pr
@@ -92,10 +94,20 @@ class TagGraph(BaseTagGraph):
         for tag in tags:
             self.direct_tags.discard(tag)
 
+    def get_recommend_tags(self):
+        tags = self.direct_tags.union(self.related_tags)
+        l = list()
+        for t in tags:
+            l.append({
+                'name': t,
+            })
+        return l
+
     def _update_related_tags(self):
         self._pagerank()
         for n, d in self.graph.nodes_iter(data=True):
-            if d['pr'] > 0.01:
+            print "%s: %f" % (n, d['pr'])
+            if d['pr'] > (1.0 / self.graph.number_of_nodes()):
                 self.related_tags.add(n)
 
 
@@ -105,6 +117,7 @@ class TextMiner(object):
 
     def __init__(self, tags):
 #        terms = NounTag.objects.all()
+        print "!!! creating a text miner"
         self.tags = frozenset(t.name for t in tags)
 
     def get_match_tags(self, text):

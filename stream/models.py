@@ -35,7 +35,7 @@ class Post(TaggableItem):
     time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     repost = models.ForeignKey('self', null=True, blank=True)
-    thread = models.ForeignKey(Thread)
+#    thread = models.ForeignKey(Thread)
     title = models.CharField(max_length=40)
     body = models.TextField()
 
@@ -51,7 +51,7 @@ class Post(TaggableItem):
     def to_json(self, user):
         post = {
             'id': self.id,
-            'tid': self.thread_id,
+#            'tid': self.thread_id,
             'reid': self.repost_id,
             'user': self.user.username,
             'time': self.time.strftime('%Y-%m-%dT%H:%M:%S'),

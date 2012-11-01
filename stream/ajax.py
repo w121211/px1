@@ -159,6 +159,9 @@ def autotag_post(request):
         'tags': [],
         }
 
+    print request.POST
+    tags = request.POST.getlist('tags[]')
+
     # Validate post content
     f = PostForm(request.POST)
     if not f.is_valid():
@@ -170,7 +173,8 @@ def autotag_post(request):
     g = TagGraph(_miner)
     g.add_text(post.title)
     g.add_text(post.body)
-    resp['tags'] = g.direct_tags
+#    resp['tags'] = list(g.direct_tags)
+    resp['tags'] = g.get_recommend_tags()
 
     return _response(resp)
 
@@ -194,6 +198,7 @@ def unvote_livetag(request):
 
 def get_pushes(request):
     """
+    Undecided function
     {domain}/json/push/get/
     """
     data = None

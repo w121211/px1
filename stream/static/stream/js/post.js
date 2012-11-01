@@ -1,3 +1,31 @@
+Noodle.Tag = (function() {
+    var template =
+        '{{#each tags}}' +
+        '<div class="tag">{{ name }}</div>' +
+        '{{/each}}';
+
+    var testJson = {
+        tags: [{
+            name: "tag1"
+        },{
+            name: "tag2"
+        },{
+            name: "tag3"
+        }]
+    };
+
+    var render = function(data) {
+        var tmpl = Handlebars.compile(template);
+        var html = tmpl(data);
+        return new Handlebars.SafeString(html);
+    };
+
+    return {
+        json: testJson,
+        render: render
+    }
+})();
+
 Noodle.LiveTag = (function() {
 
     var template =
@@ -163,25 +191,29 @@ Noodle.Post = (function() {
 
                     renderPosts(data.posts);
                 }
-
             }
         });
     };
 
-    var autoTag = function(event) {
+    var autotagPost = function(event) {
+        console.log('autotag');
         event.preventDefault();
         $.ajax({
-            url: 'api/post/new/',
+            url: 'api/post/autotag/',
             type: 'POST',
             data: {
-                'title': $(POST_FORM_TITLE).val(),
-                'body': $(POST_FORM_BODY).val(),
-                'tags': $(POST_FORM_TAG).val()
+                'title': $(Noodle.Dom.Post.FORM_TITLE).val(),
+                'body': $(Noodle.Dom.Post.FORM_BODY).val()
+//                'tags': $(Noodle.Dom.Post.FORM_TAG).val()
             },
             dataType: 'json',
             success: function(data) {
                 console.log(data);
-                Noodle.Alert.render(data.alert);
+                if (data.alert)
+                    Noodle.Alert.render(data.alert);
+                else {
+                    _renderFormTagBox(data);
+                }
             }
         });
     };
@@ -273,6 +305,13 @@ Noodle.Post = (function() {
         });
     };
 
+    var _renderFormTagBox = function(data) {
+        var $box = $(Noodle.Dom.Post.FORM_TAG_BOX);
+        var html = Noodle.Tag.render(data);
+        console.log(html);
+        $box.append(String(html));
+    };
+
     var renderPosts = function(posts) {
         var $box = $(Noodle.Dom.Post.BOX);
         for (var i = 0; i < posts.length; i++) {
@@ -294,6 +333,6 @@ Noodle.Post = (function() {
         reply: replyPost,
         push: pushPost,
         tag: tagPost,
-        autotag: null
+        autotag: autotagPost
     }
 })();

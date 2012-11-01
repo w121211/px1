@@ -9,6 +9,8 @@
 <script src="{{ STATIC_URL }}stream/js/dom.js"></script>
 <script src="file:///Users/chi/git/px1/stream/static/stream/js/utils.js"></script>
 <script src="{{ STATIC_URL }}stream/js/utils.js"></script>
+<script src="file:///Users/chi/git/px1/stream/static/stream/js/alert.js"></script>
+<script src="{{ STATIC_URL }}stream/js/alert.js"></script>
 <script src="file:///Users/chi/git/px1/stream/static/stream/js/channel.js"></script>
 <script src="{{ STATIC_URL }}stream/js/channel.js"></script>
 <script src="file:///Users/chi/git/px1/stream/static/stream/js/post.js"></script>
@@ -20,7 +22,7 @@
 -->
 <style type="text/css">
     div, ul, li {
-        display: inline;
+{#        display: inline;#}
     }
     #wrap {
         float: left;
@@ -41,15 +43,21 @@
 </style>
 
 <div id="wrap">
+    <!-- alert -->
+    <div class=alert>[alert]</div>
+
+    <!-- channel panel -->
     <div class="channel-box"></div>
+
+    <!-- stream panel -->
     <div class="stream">
-        <div class=alert>[alert]</div>
         <div class="post_form">
-            title:<textarea class="post_form_title"></textarea>
-            body: <textarea class="post_form_body"></textarea>
-            tags: <textarea class="post_form_tag"></textarea>
-            <a href="#" class="post_form_autotag">auto tag</a>
-            <a href="#" class="post_form_new">new post</a>
+            title:<textarea class="post_form_title_input"></textarea><br>
+            body: <textarea class="post_form_body_input"></textarea><br>
+            tags: <textarea class="post_form_tag_input"></textarea><br>
+            <div class="post_form_tag_box"></div>
+            <a href="#" class="post_form_autotag_btn">auto tag</a>
+            <a href="#" class="post_form_send_btn">new post</a>
         </div>
         <p>*************************************************************</p>
         <div class="post_box"></div>
