@@ -9,40 +9,44 @@ from django.http import HttpResponse
 
 from account.decorators import login_required
 
+from channel.models import Channel
 from tagcanal.models import *
 from tagcanal.utils import *
-from stream.models import *
+from stream.ajax import _response
 from stream.decorators import ajax_view
+
+def _get_channels(request):
+    resp = {
+        'alert': None,
+        'channels': [],
+        }
+    qs = Channel.objects.filter(user=request.user)
+    for channel in qs:
+        resp['channels'].append(channel.to_json())
+    return _response(resp)
 
 @ajax_view
 def get_channels(request):
-    resp = {
-        'alert': None,
-        'chas': [],
-        }
-    tags = request.GET.get('t', None)
-    date = request.GET.get('d', None)
+    return _get_channels(request)
 
-    qs = Post.objects.filter(user=request.user)
-    if len(tags) == 0: # return my_stream posts
-        qs = _paginate(qs, POSTS_PER_PAGE, date)
-    else: # return posts by given tags
-        tags = str(tags).split('+')
-        qs = _tagger.search(qs, tags, request.user)
+@ajax_view(method='POST')
+def add_channel(request):
+    Channel.objects.create(user=request.user)
+    return _get_channels(request)
 
-    for post in qs:
-        resp['posts'].append(post.to_json(request.user))
-    if len(resp['posts']) == 0:
-        resp['alert'] = 'error: can not find any posts'
-    return _response(resp)
+@ajax_view(method='POST')
+def remove_channel(request):
+    Channel.objects.get(id=request.POST['channel']).delete()
+    return _get_channels(request)
 
-def new_channel(request):
-    pass
+@ajax_view(method='POST')
+def add_tag(request):
+    "add a tag to a channel"
+    Channel.objects.get(id=request.POST['channel']).add_tag(request.POST['tag'])
+    return _get_channels(request)
 
-def tag_channel(request):
-    "add a tag from a tagcanal"
-    pass
-
-def untag_channel(request):
-    "remove a tag from a tagcanal"
-    pass
+@ajax_view(method='POST')
+def remove_tag(request):
+    "remove a tag to a channel"
+    Channel.objects.get(id=request.POST['channel']).remove_tag(request.POST['tag'])
+    return _get_channels(request)

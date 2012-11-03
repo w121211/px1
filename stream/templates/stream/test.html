@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- source files for development -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta6/handlebars.min.js"></script>
@@ -17,9 +18,6 @@
 <script src="{{ STATIC_URL }}stream/js/post.js"></script>
 <link rel="stylesheet" type="text/css" href="../../static/stream/noodle.css">
 
-<!--
-<script src="{{ STATIC_URL }}stream/noodle.js"></script>
--->
 <style type="text/css">
     div, ul, li {
 {#        display: inline;#}
@@ -28,7 +26,7 @@
         float: left;
         width: 800px;
     }
-    .channel-box {
+    .left_panel {
         float: left;
         width: 200px;
         background: #9c9;
@@ -44,20 +42,24 @@
 
 <div id="wrap">
     <!-- alert -->
+    <a href="/">Home</a>
     <div class=alert>[alert]</div>
 
     <!-- channel panel -->
-    <div class="channel-box"></div>
+    <div class="left_panel">
+        <div class="channel_box"></div>
+        <a class="channel_add_btn" href="#">new channel</a>
+    </div>
 
     <!-- stream panel -->
     <div class="stream">
         <div class="post_form">
-            title:<textarea class="post_form_title_input"></textarea><br>
-            body: <textarea class="post_form_body_input"></textarea><br>
+            title:<textarea class="post_form_title_input">快來擁抱西藏樸素的美麗吧！</textarea><br>
+            body: <textarea class="post_form_body_input">西藏的神秘與宗教總讓人感到遙遠 我從沒想過自己能在學生時期就能踏進這地方 畢竟西藏要襯年輕去啊！ 感恩的是參加交流團讓我不用走馬看花，能深入這個深不見底的世界 我從來沒有試過在客棧post文 只是看其他人打的 但真的好想跟大家分享我的西藏之旅 有甚麼意見隨便留言啊！！</textarea><br>
             tags: <textarea class="post_form_tag_input"></textarea><br>
             <div class="post_form_tag_box"></div>
             <a href="#" class="post_form_autotag_btn">auto tag</a>
-            <a href="#" class="post_form_send_btn">new post</a>
+            <a href="#" class="post_form_new_post_btn">new post</a>
         </div>
         <p>*************************************************************</p>
         <div class="post_box"></div>

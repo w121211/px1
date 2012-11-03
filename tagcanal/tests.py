@@ -10,7 +10,6 @@ from django.utils import unittest
 from django.db import models
 
 from tagcanal.models import *
-from tagcanal.utils import *
 
 class TaggerBasicTest(object):
     def setUp(self):
@@ -105,26 +104,35 @@ class TaggerTest(object):
 >>> u
 <User: uuu1>
 
->>> Item.objects.all()
-[]
-
 # init data
 >>> i = Item.objects.create(user=u)
 >>> i
 <Item: 1:[]>
 
+>>> ForbiddenTag.objects.create(name="aaa", user=u)
+<ForbiddenTag: FB|aaa>
+
 # test basic noun tagger
+>>> from tagcanal.utils import *
 >>> n = NounTagger()
->>> n.tag(i, 'test', u)
-<LiveTag: test>
+>>> n.tag(i, 'tag1', u)
+<LiveTag: tag1>
 >>> i
-<Item: 1:[<LiveTag: test>]>
+<Item: 1:[<LiveTag: tag1>]>
 >>> i.tags.all()[0].tag
-<Tag: NN|test>
+<Tag: NN|tag1>
 >>> i.tags.all()[0].voters.all()
 [<User: uuu1>]
->>> n.search(Item.objects.all(), ['test'])
-[<Item: 1:[<LiveTag: test>]>]
+>>> n.search(Item.objects.all(), ['tag1'])
+[<Item: 1:[<LiveTag: tag1>]>]
+
+# test forbidden tag
+>>> try:
+...     n.tag(i, "aaa", u)
+... except ForbiddenTagError as e:
+...     print e.tag
+...
+aaa
 
 # test basic like tagger
 >>> l = LikeTagger('like')
@@ -132,7 +140,7 @@ class TaggerTest(object):
 >>> l0.tag
 <FunctionTag: FN|like>
 >>> i
-<Item: 1:[<LiveTag: test>, <LiveTag: like>]>
+<Item: 1:[<LiveTag: tag1>, <LiveTag: like>]>
 >>> i.tags.all()[0].voters.all()
 [<User: uuu1>]
 >>> l.search(Item.objects.filter(), u)
@@ -163,44 +171,17 @@ class TaggerTest(object):
 >>> l = g.vote(l4.id, u2)
 
 >>> Item.objects.all()
-[<Item: 1:[<LiveTag: test>, <LiveTag: like>]>, <Item: 2:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
+[<Item: 1:[<LiveTag: tag1>, <LiveTag: like>]>, <Item: 2:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>]
 >>> g.search(Item.objects.filter(), ['like'])
-[<Item: 1:[<LiveTag: test>, <LiveTag: like>]>, <Item: 2:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
+[<Item: 1:[<LiveTag: tag1>, <LiveTag: like>]>, <Item: 2:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>]
 >>> g.search(Item.objects.filter(), ['test'])
-[<Item: 1:[<LiveTag: test>, <LiveTag: like>]>, <Item: 2:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
+[<Item: 2:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>]
 >>> g.search(Item.objects.filter(), ['alpha', 'test'])
-[<Item: 2:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
+[<Item: 2:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>]
 >>> g.search(Item.objects.filter(), ['like', 'alpha', 'test'])
-[<Item: 2:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
+[<Item: 2:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>, <Item: 3:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>]
 >>> g.search(Item.objects.filter(), ['like'], u1)
-[<Item: 1:[<LiveTag: test>, <LiveTag: like>]>, <Item: 2:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
+[<Item: 1:[<LiveTag: tag1>, <LiveTag: like>]>, <Item: 2:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>]
 >>> g.search(Item.objects.filter(), ['like', 'alpha'], u1)
-[<Item: 2:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
->>> g.search(Item.objects.filter(), ['like', 'alpha'], u2)
-[<Item: 3:[<LiveTag: test>, <LiveTag: like>, <LiveTag: alpha>]>]
-    """
-
-class TextMinerTest(object):
-    """
-# init data
->>> u = User.objects.create(username='uuu1', password='uuu1')
->>> n = NounTag.objects.create(name="test", sub_type='T', user=u)
->>> n = NounTag.objects.create(name="English", sub_type='T', user=u)
->>> n = NounTag.objects.create(name=u'\u7d10\u7d04\u5e02', sub_type='T', user=u)
->>> n = NounTag.objects.create(name=u'\u707d\u96e3', sub_type='T', user=u)
-
-# ASC-II test
->>> t = u'this is a simple test, and is for English only.'
->>> m = TextMiner()
->>> m.tags
-frozenset([u'test', u'\u7d10\u7d04\u5e02', u'\u707d\u96e3', u'English'])
->>> m._tokenize(t)
-[u'this', u'is', u'a', u'simple', u'test', u'and', u'is', u'for', u'English', u'only', u'']
->>> m.get_match_tags(t)
-{u'test': 1, u'English': 1}
-
-# Unicode test
->>> t = u'\u4e94\u628a\u9470\u5319\u5728\u624b\uff0c\u6703\u8b93\u7d10\u7d04\u5e02\u9677\u5165\u707d\u96e3\uff0c'
->>> m.get_match_tags(t)
-{u'\u7d10\u7d04\u5e02': 1, u'\u707d\u96e3': 1}
+[<Item: 2:[<LiveTag: like>, <LiveTag: test>, <LiveTag: alpha>]>]
     """

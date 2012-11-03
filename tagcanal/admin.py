@@ -8,7 +8,7 @@ admin.site.register(VerbTag)
 
 autorobo, success = User.objects.get_or_create(username='autorobo', password='autorobo')
 
-def _import_tags():
+def import_tags():
     HUB_FILE_PATH = 'wired_hubs.txt'
     TERMINAL_FILE_PATH = 'wired_terminals.txt'
 

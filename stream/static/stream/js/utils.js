@@ -33,6 +33,6 @@ function setUrlParam(name,value){
         search = '?'+name + '=' +encodeURIComponent(value);
     }
     //console.log("search:" + decodeURIComponent(search));
-    document.location.href += search;
-    //History.pushState({state:History.getStateId()+1},document.title,search);
+//    document.location.href += search;
+    document.location.search = search;
 }

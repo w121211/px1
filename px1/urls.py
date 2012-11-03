@@ -10,6 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns("",
     url(r"", include("stream.urls")),
+    url(r"", include("channel.urls")),
     url(r"^home/$", direct_to_template, {"template": "homepage.html"}, name="home"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/", include("account.urls")),

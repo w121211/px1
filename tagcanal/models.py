@@ -22,7 +22,7 @@ class Tag(models.Model):
 
 class ForbiddenTag(Tag):
     def __init__(self, *args, **kwargs):
-        super(FunctionTag, self).__init__(*args, **kwargs)
+        super(ForbiddenTag, self).__init__(*args, **kwargs)
         self.type = 'FB'
 
 
@@ -73,6 +73,9 @@ class LiveTag(models.Model):
     def vote(self, user):
         self.voters.add(user)
 
+    def unvote(self, user):
+        self.voters.remove(user)
+
     def get_votes(self):
         return self.voters.count()
 
@@ -99,7 +102,21 @@ class LiveTag(models.Model):
 
 class Item(models.Model):
     user = models.ForeignKey(User)
-    tags = generic.GenericRelation(LiveTag)
+    tags = generic.GenericRelation(LiveTag, related_name="%(app_label)s_%(class)s_tags")
 
     def __unicode__(self):
         return u"%d:%s" % (self.id, self.tags.all())
+
+
+class TaggableItem(models.Model):
+    tags = generic.GenericRelation(LiveTag, related_name="%(app_label)s_%(class)s_tags")
+
+    def get_tags(self, user):
+        l = list()
+        for t in self.tags.select_related(depth=5).all():
+            l.append(t.to_json(user))
+        return l
+
+    class Meta:
+        abstract = True
+        ordering = ('-time',)

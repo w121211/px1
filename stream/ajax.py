@@ -41,20 +41,48 @@ def get_posts(request):
         'posts': [],
         }
     tags = request.GET.get('t', None)
-    date = request.GET.get('d', None)
+    time = request.GET.get('d', None)
 
     qs = Post.objects.all()
-    print("qs")
-    if len(tags) == 0: # return my_stream posts
-        qs = _paginate(qs, POSTS_PER_PAGE, date)
-    else: # return posts by given tags
-        tags = str(tags).split('+')
+    if tags:
+        # return posts by given tags
+        tags = tags.split('+')
         qs = _tagger.search(qs, tags, request.user)
+    else:
+        # return my_stream posts
+        qs = _paginate(qs, POSTS_PER_PAGE, time)
 
     for post in qs:
         resp['posts'].append(post.to_json(request.user))
     if len(resp['posts']) == 0:
-        resp['alert'] = 'error: can not find any posts'
+        resp['alert'] = 'no matching posts'
+    return _response(resp)
+
+@ajax_view(method='POST')
+def autotag_post(request):
+    """
+    Take a post content as input, find matching tags and return.
+    {domain}/api/post/autotag/
+    """
+    resp = {
+        'alert': None,
+        'tags': [],
+        }
+
+    # Validate post content
+    f = PostForm(request.POST)
+    if not f.is_valid():
+        resp['alert'] = "post title or body is not valid"
+        return _response(resp)
+    post = f.save(commit=False)
+
+    # get matching tags
+    g = TagGraph(_miner)
+    g.add_text(post.title)
+    g.add_text(post.body)
+    #    resp['tags'] = list(g.direct_tags)
+    resp['tags'] = g.get_recommend_tags()
+
     return _response(resp)
 
 # TODO fix ajax redirect (302) error. (1) add ajaxRedirectResponse (2) using view div to display html
@@ -68,23 +96,19 @@ def new_post(request):
         'alert': None,
         }
 
-    try:
-        # saving a thread
-        # f = ThreadForm(request.POST)
-        # thread = f.save()
+    # Validate post content
+    f = PostForm(request.POST)
+    if not f.is_valid():
+        resp['alert'] = "post title or body is not valid"
+        return _response(resp)
+    post = f.save(commit=False)
+    post.user = request.user
+    post.save()
 
-        # saving a post
-        print request.POST
-        f = PostForm(request.POST)
-        post = f.save(commit=False)
-        post.user = request.user
-        # post.thread = thread
-        post.save()
-
-        # add tags
-        _tagger.like.tag(post)
-    except:
-        print "Error:", sys.exc_info()[0]
+    # add tags
+    tags = request.POST.getlist('tags[]')
+    _tagger.like.tag(post)
+    _tagger.noun.bulk_tag(post, tags, request.user)
 
     return _response(resp)
 
@@ -114,87 +138,76 @@ def push_post(request):
     """
     resp = {
         'alert': None,
+        'pushes': [],
         }
     f = PushForm(request.POST)
+    if not f.is_valid():
+        resp['alert'] = f.errors.as_text()
+        return _response(resp)
     push = f.save(commit=False)
     push.user = request.user
     push.save()
 
-#    json = simplejson.loads(request.body)
-#    p = Push()
-#    p.user = request.user
-#    p.post_id = json['post_id']
-#    p.body = json['push_body']
-#    p.save()
-
+    _tagger.like.tag(push)
+    resp['pushes'] = push.post.get_pushes(request.user)
     return _response(resp)
 
-@ajax_view
+@ajax_view(method='POST')
 def tag_post(request):
     """
     User tag a specified post.
     {domain}/api/tag/post/
     """
     resp = {
-        'msg': '',
-        'tag': '',
-    }
-    p = request.GET.get('id', None)
-    t = request.GET.get('t', None)
-    if p or t:
-        resp['msg'] = 'error: empty tag or post'
-    else:
-        _tagger.noun.tag(p, t, request.user)
-        resp['tag'] = t
-    return _response(resp)
-
-@ajax_view(method='POST')
-def autotag_post(request):
-    """
-    Take a post content as input, find matching tags and return.
-    {domain}/api/post/autotag/
-    """
-    resp = {
         'alert': None,
         'tags': [],
-        }
-
-    print request.POST
-    tags = request.POST.getlist('tags[]')
-
-    # Validate post content
-    f = PostForm(request.POST)
+    }
+    f = LivetagForm(request.POST)
     if not f.is_valid():
-        resp['alert'] = "post title or body is not valid"
-        return _response(resp)
-    post = f.save(commit=False)
-
-    # get matching tags
-    g = TagGraph(_miner)
-    g.add_text(post.title)
-    g.add_text(post.body)
-#    resp['tags'] = list(g.direct_tags)
-    resp['tags'] = g.get_recommend_tags()
-
+        resp['alert'] = f.errors
+        return _response(f)
+    try:
+        p = Post.objects.get(id=f.cleaned_data['post'])
+        _tagger.noun.tag(p, f.cleaned_data['tag'], request.user)
+        resp['tags'] = p.get_tags(request.user)
+    except ForbiddenTagError as e:
+        resp['alert'] = "%s cannot be used as the tag" % e.tag
     return _response(resp)
 
+@ajax_view
 def vote_livetag(request):
     """
     User can vote a live tag (a tag of an object) with a given live tag id.
     {domain}/api/tag/vote/
     """
     resp = {
-        'votes': None
+        'alert': None,
+        'tags': [],
     }
-    if request.is_ajax() and 'i' in request.GET:
-        t = LiveTag.objects.get(id=request.GET['i'])
-        t.vote(request.user)
-        resp['votes'] = t.get_votes()
-    return HttpResponse(simplejson.dumps(resp, separators=(',', ':')),
-        mimetype='application/json')
+    try:
+        l = _tagger.vote(request.GET['t'], request.user)
+        item = l.content_object
+        resp['tags'] = item.get_tags(request.user)
+    except LiveTag.DoesNotExist:
+        resp['alert'] = "cannot find the live tag"
+    return _response(resp)
 
 def unvote_livetag(request):
-    return None
+    """
+    User can vote a live tag (a tag of an object) with a given live tag id.
+    {domain}/api/tag/unvote/
+    """
+    resp = {
+        'alert': None,
+        'tags': [],
+        }
+    try:
+        l = _tagger.unvote(request.GET['t'], request.user)
+        item = l.content_object
+        resp['tags'] = item.get_tags(request.user)
+    except LiveTag.DoesNotExist:
+        resp['alert'] = "cannot find the live tag"
+    return _response(resp)
 
 def get_pushes(request):
     """

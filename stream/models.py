@@ -1,23 +1,11 @@
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.db import models
+from django import forms
 from django.forms import ModelForm
 
-from tagcanal.models import NounTag
 from tagcanal.models import LiveTag
-
-class TaggableItem(models.Model):
-    tags = generic.GenericRelation(LiveTag, related_name="%(app_label)s_%(class)s_tags")
-
-    def get_tags(self, user):
-        l = list()
-        for t in self.tags.select_related(depth=5).all():
-            l.append(t.to_json(user))
-        return l
-
-    class Meta:
-        abstract = True
-        ordering = ('-time',)
+from tagcanal.models import TaggableItem
 
 
 class Thread(models.Model):
@@ -73,6 +61,9 @@ class Push(TaggableItem):
     post = models.ForeignKey(Post)
     body = models.CharField(max_length=140)
 
+    class Meta:
+        ordering = ['time']
+
     def __unicode__(self):
         return u"%s @%s" % (self.body, self.user)
 
@@ -84,16 +75,6 @@ class Push(TaggableItem):
         }
         return p
 
-class Channel(models.Model):
-    user = models.ForeignKey(User)
-    tags = models.ManyToManyField(NounTag)
-
-    def to_json(self):
-        j = {
-            'tags': self.tags
-        }
-        return j
-
 
 class ThreadForm(ModelForm):
     class Meta:
@@ -103,10 +84,15 @@ class ThreadForm(ModelForm):
 class PostForm(ModelForm):
     class Meta:
         model = Post
-#        include = ('title', 'body')
         exclude = ('user')
 
 
 class PushForm(ModelForm):
     class Meta:
         model = Push
+        exclude = ('user')
+
+
+class LivetagForm(forms.Form):
+    tag = forms.SlugField(max_length=10)
+    post = forms.IntegerField(min_value=1)
